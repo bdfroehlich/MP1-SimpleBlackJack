@@ -26,11 +26,7 @@ class Deck {
     }
 }
 
-
-// let testCard = new Card(2,'Clubs');
-// console.log(testCard)
-
-
+//create deck
 const deck = new Deck();
 deck.createDeck(cardValue,cardSuit)
 console.log(deck)
@@ -53,22 +49,5 @@ console.log(deckArray)
 //         }
 // })
 // };
-
-
-
-
-
-
-// function addCardValue(array) {
-//     array.map(element => {
-//             if(typeof(element.value) == 'number') {
-//                 element.weightvalue = element.value;
-//             } else if (element.value == 'Jack' || element.value == 'Queen' || element.value == 'King') {
-//                 element.weightvalue = 10;
-//             } else if (element.value == 'Ace'){
-//                 element.weightvalue = 11;
-//             }
-//     })
-// }
 
 // console.log(addCardValue(deck))
