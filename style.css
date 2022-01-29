@@ -1,0 +1,16 @@
+div {
+    border: 5px solid teal;
+    margin: 1em;
+    text-align: center;
+}
+
+body {
+    
+}
+
+.container {
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
