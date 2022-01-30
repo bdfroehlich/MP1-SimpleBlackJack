@@ -10,6 +10,8 @@ div {
 
 body {
     background-color: #35654d ;
+    display: flex;
+    justify-content: center;
 }
 
 .container {
