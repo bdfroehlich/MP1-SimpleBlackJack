@@ -1,21 +1,34 @@
 div {
-    border: 5px solid rgb(128, 0, 109);
+    border: 2px solid rgb(0, 0, 0);
     margin: 1em;
     text-align: center;
 }
 
 .button-div {
-    width: 50vh;
+    width: 90vh;
+    max-height: 5vh;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
-.player, .dealer, .button {
-    flex: auto;
+.card-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 90vh;
+    height: 90vh;
+}
+
+.dealer-cards, .deck-cards, .player-cards {
+    width: 90%;
 }
 
 body {
     background-color: #35654d ;
     display: flex;
     justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
+
