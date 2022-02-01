@@ -66,12 +66,15 @@ class Queue {
       
       this.data = [];
       this.rear = 0;
+      this.size = 52;
     }
     
     enqueue(element) {
-           this.data[this.rear] = element;
-           this.rear = this.rear + 1;
-   }
+        if(this.rear < this.size ) {
+              this.data[this.rear] = element;
+              this.rear = this.rear + 1;
+         }
+      }
    length() {
      
       return this.rear;
@@ -113,7 +116,7 @@ class Queue {
  }
 
 function getCardImageName(card){
-    return `${card.value}_of_${card.suit}.png`
+    return `assets/${card.value}_of_${card.suit}.png`
 }
 
 
