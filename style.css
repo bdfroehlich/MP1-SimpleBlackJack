@@ -21,6 +21,7 @@ div {
 }
 
 .dealer-cards, .deck-cards, .player-cards {
+    position: relative;
     width: 90%;
     height: 30%;
     display: flex;
@@ -35,4 +36,11 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+.player-text, .dealer-text {
+    position: absolute;
+    top: 4px;
+    left: 42%;
+}
+
 
