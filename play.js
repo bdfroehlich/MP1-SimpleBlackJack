@@ -1,8 +1,10 @@
+//***variables***
 const deck = new Deck()
 deck.shuffleDeck()
-console.log(deck.cards)
+var isDealClicked = false;
+// console.log(deck.cards)
 
-//create new Queue to put our shuffled array of cards into a playQueue
+//***create new Queue to put our shuffled array of cards into a playQueue***
 let playQueue = new Queue()
 deck.cards.map(element =>{
     playQueue.enqueue(element)
@@ -11,6 +13,8 @@ deck.cards.map(element =>{
 // console.log(playQueue.dequeue())
 // console.log(getCardImageName(playQueue.dequeue()))
 
+
+//***deal card & image render functions***
 async function firstPlayerCard(){
     //create image element associated with first card off top of deck
     var createImage = document.createElement("img");
@@ -36,14 +40,20 @@ function secondDealerCard(){
     document.querySelector('.dealer-cards').appendChild(createImage);
 }
 
+//***handlers***
+document.querySelector('.deal').addEventListener('click', () =>{
+    firstPlayerCard()
+    firstDealerCard()
+    secondPlayerCard()
+    secondDealerCard()
+    console.log(playQueue)
+})
 
-firstPlayerCard()
-firstDealerCard()
-secondPlayerCard()
-secondDealerCard()
-firstPlayerCard()
-firstDealerCard()
-secondPlayerCard()
-secondDealerCard()
+
+
+// firstPlayerCard()
+// firstDealerCard()
+// secondPlayerCard()
+// secondDealerCard()
 // playQueue.dequeue()
-console.log(playQueue)
+// console.log(playQueue)
