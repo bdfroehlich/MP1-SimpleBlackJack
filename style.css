@@ -4,6 +4,12 @@ div {
     text-align: center;
 }
 
+.button-div {
+    width: 50vh;
+    display: flex;
+    justify-content: space-between;
+}
+
 .player, .dealer, .button {
     flex: auto;
 }
@@ -12,12 +18,4 @@ body {
     background-color: #35654d ;
     display: flex;
     justify-content: center;
-}
-
-.container {
-    height: 95vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    
 }
