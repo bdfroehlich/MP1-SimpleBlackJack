@@ -1,19 +1,14 @@
 *** deck creation and play ***
-1. Need to create an array of a deck of 52 cards with suits and values
-2. Is there a way to tie each corresponding suit / value to a png image of the specified card? 
-    do we need to use css sprite? or maybe a regex to check the number value and suit value of 
-    each PNG against the value and suit of the index in the deck array and assign the correct
-    png to the image source for that card? This seems very convoluted...
-3. The number cards will need to have a weighted value associated with its interger value and the face cards and ace
-    will need to have weighted values as well.
-4. Do we have to have a shuffle deck function or can the draw function just pick a random number from the deck array
-    and remove it using .pop()
-5. We need a new round or new game button that refresh the deck back to 52 cards
-6. The deal function needs to give each player (dealer and player) 2 cards and the dealer cards need to be face down
-7. Need functions to control player hit and player stand
-8. Need function to control the dealer hit or stand depending on the conditonal that if the weighted value of the dealears cards is not 17
-    the dealer hits until the weighted value is greater than 17
-9. Need a function to check if the weighted value of cards is over 21 you automatically lose
+1. need to have an empty dealer and player array that we can push the dealt cards into and use these arrays of dealt cards to get
+the total weighted values...
+2. when the player clicks stand I need some logic to check if the dealers weighted card values are less than 17 and if so when the player selects stand the dealer will take another card and his card value will be checked again if its over 21 player automatically wins
+3. need logic to check total weighted value in both dealer and players hand on intial deal and if the value is 21 dealer or player wins
+4. start new round button needs to erase the board and reset the playdeck back to a shuffled 52 card deck
+5. hit button must not be clickable until after the intial deal
+6. have an intial bet pool of 1000 tokens and some way to bet a player input amount of tokens.
+    if the player wins the prize is doubled
+    if they lose the dealer gets the bet
+    if their tokens ever reach 0 the game is over
 
 
 
