@@ -24,7 +24,9 @@ class Card {
         this.value = value;
         this.suit = suit;
         this.weight = CARDWEIGHT[value];
+        this.cardIsFaceUp = false;
     }
+
 }
 
 class Deck {
@@ -60,63 +62,19 @@ function shuffleArray(array) {
     return array;
 }
 
-class Queue {
-   
-    constructor(){
-      
-      this.data = [];
-      this.rear = 0;
-      this.size = 52;
-    }
-    
-    enqueue(element) {
-        if(this.rear < this.size ) {
-              this.data[this.rear] = element;
-              this.rear = this.rear + 1;
-         }
-      }
-   length() {
-     
-      return this.rear;
-   }
-   isEmpty() {
-    
-     return this.rear === 0;
-   }
-   getFront() {
-    
-     if(this.isEmpty() === false) {
-         return this.data[0];
-     }
-   }
-   getLast() {
-     
-      if(this.isEmpty() === false) {
-        
-           return this.data[ this.rear - 1 ] ;
-      }
-   }
-   dequeue() {
-    
-      if(this.isEmpty() === false) {
-           
-           this.rear = this.rear-1;
-           return this.data.shift();
-      }
-   }
-   print() { 
-    for(let i =0; i < this.rear; i++) {
-       console.log(this.data[i]);
-     }
-   }
-    clear() {
-       this.data.length = 0;
-       this.rear = 0;
-    }
- }
-
-function getCardImageName(card){
+function getPlayerCard(card){
+    playerArray.push(card.weight)
     return `assets/${card.value}_of_${card.suit}.png`
 }
 
+function getDealerCard(card){
+    dealerArray.push(card.weight)
+    if (card.cardIsFaceUp) {
+        return `assets/${card.value}_of_${card.suit}.png`
+    }
+    return `assets/backcard.png`
+}
 
+function drawTopCard(){
+    return deck.cards.shift();
+}
