@@ -1,8 +1,8 @@
-/* div {
+div {
     border: 2px solid rgb(0, 0, 0);
     margin: auto;
     text-align: center;
-} */
+}
 
 .button-div {
     min-width: 100%;
@@ -22,7 +22,7 @@
     height: 90vh;
 }
 
-.dealer-cards, .deck-cards, .player-cards {
+.dealer-cards, .player-cards {
     position: relative;
     width: 90%;
     height: 30%;
@@ -51,4 +51,27 @@ body {
     padding-right: 3em;
 }
 
+.deck-cards, .dealer-total, .player-details {
+    position: relative;
+    width: 27%;
+    height: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.player-details {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.player-total, .player-currency, .player-status {
+    width: 90%;
+    text-align: center;
+}
+
+.player-total, .player-currency, .player-total-text {
+    color: wheat;
+}
 

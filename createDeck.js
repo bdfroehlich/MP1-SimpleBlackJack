@@ -63,12 +63,12 @@ function shuffleArray(array) {
 }
 
 function getPlayerCard(card){
-    playerArray.push(card.weight)
+    playerArray.push(card)
     return `assets/${card.value}_of_${card.suit}.png`
 }
 
 function getDealerCard(card){
-    dealerArray.push(card.weight)
+    dealerArray.push(card)
     if (card.cardIsFaceUp) {
         return `assets/${card.value}_of_${card.suit}.png`
     }

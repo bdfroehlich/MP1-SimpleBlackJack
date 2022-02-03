@@ -1,21 +1,17 @@
 //***variables***
 var deck = new Deck();
 deck.shuffleDeck();
+
 var isDealClicked = false;
+var canHit = false;
 
 let playerArray = [];
 let dealerArray = [];
-// console.log(deck.cards)
+
 
 const dealerCards = document.querySelector(".dealer-cards");
 const playerCards = document.querySelector(".player-cards");
-
-
-//***create new Queue to put our shuffled array of cards into a playQueue***
-// let playQueue = new Queue();
-// deck.cards.map(element =>{
-//     playQueue.enqueue(element)
-// })
+const playerTotal = document.querySelector(".player-total")
 
 //***deal card & image render functions***
 function dealPlayerCard(){
@@ -33,23 +29,41 @@ function dealDealerCard(cardIsFaceUp = true){
     document.querySelector('.dealer-cards').appendChild(createImage);
 }
 
+
 function hitCard(){
-    var createImage = document.createElement("img");
-    createImage.src = getPlayerCard(drawTopCard());
-    document.querySelector('.player-cards').appendChild(createImage);
+    if(canHit == true){
+        var createImage = document.createElement("img");
+        createImage.src = getPlayerCard(drawTopCard());
+        updatePlayerTotal();
+        document.querySelector('.player-cards').appendChild(createImage);
+        checkTotal()
+    }
 }
+
 
 function stand(){
 
 }
 
-function clearTable(){
-    dealerCards.innerHTML = "";
-    playerCards.innerHTML = "";
+function updateTotal(array){
+    let sum = 0;
+    for(let i=0; i < array.length; i++){
+        // console.log(array[i])
+        sum += array[i].weight;
+    }
+    return sum;
+}
 
-    refreshDeck();
-    playerArray = [];
-    dealerArray = [];
+function checkTotal(){
+    if (updateTotal(playerArray) > 21)
+    {
+        console.log("player lost")
+    }
+}
+
+
+function updatePlayerTotal(){
+    document.querySelector(".player-total").innerHTML = 'Player Total: ' + updateTotal(playerArray)
 }
 
 function refreshDeck(){
@@ -58,13 +72,27 @@ function refreshDeck(){
 }
 
 var dealCards = function(){
-    dealPlayerCard()
-    dealDealerCard(false)
-    dealPlayerCard()
-    dealDealerCard()
+    dealPlayerCard();
+    dealDealerCard(false);
+    dealPlayerCard();
+    dealDealerCard();
+    
     if(isDealClicked == false) { 
         this.removeEventListener("click", dealCards);
     }
+    updatePlayerTotal();
+    canHit = true;
+}
+
+function clearTable(){
+    dealerCards.innerHTML = "";
+    playerCards.innerHTML = "";
+    playerTotal.innerText = "";
+
+    refreshDeck();
+    playerArray = [];
+    dealerArray = [];
+
 }
 
 //***handlers***
@@ -75,7 +103,3 @@ document.querySelector('.newround').addEventListener("click", function(){
     clearTable()
 
 })
-
-
-// playQueue.dequeue()
-// console.log(playQueue)
