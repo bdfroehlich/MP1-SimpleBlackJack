@@ -8,12 +8,14 @@ var canHit = false;
 let playerArray = [];
 let dealerArray = [];
 
-
+//*** HTML selector variables***///
 const dealerCards = document.querySelector(".dealer-cards");
 const playerCards = document.querySelector(".player-cards");
-const playerTotal = document.querySelector(".player-total")
+const playerTotal = document.querySelector(".player-total");
+const outcomeText = document.querySelector(".outcome-text");
 
-//***deal card & image render functions***
+
+//***deal card & image render functions***///
 function dealPlayerCard(){
     //create image element associated with first card off top of deck
     var createImage = document.createElement("img");
@@ -42,7 +44,7 @@ function hitCard(){
 
 
 function stand(){
-
+    canHit = false;
 }
 
 function updateTotal(array){
@@ -57,7 +59,8 @@ function updateTotal(array){
 function checkTotal(){
     if (updateTotal(playerArray) > 21)
     {
-        console.log("player lost")
+        document.querySelector(".outcome-text").innerText = "Dealer wins! Start New Round";
+        canHit = false;
     }
 }
 
@@ -88,6 +91,7 @@ function clearTable(){
     dealerCards.innerHTML = "";
     playerCards.innerHTML = "";
     playerTotal.innerText = "";
+    outcomeText.innerText = "";
 
     refreshDeck();
     playerArray = [];
@@ -96,10 +100,11 @@ function clearTable(){
 }
 
 //***handlers***
-document.querySelector('.deal').addEventListener("click", dealCards)
-document.querySelector('.hit').addEventListener("click", hitCard)
+document.querySelector('.deal').addEventListener("click", dealCards);
+document.querySelector('.hit').addEventListener("click", hitCard);
+document.querySelector('.stand').addEventListener("click", stand);
 document.querySelector('.newround').addEventListener("click", function(){
-    document.querySelector('.deal').addEventListener("click", dealCards)
-    clearTable()
+    document.querySelector('.deal').addEventListener("click", dealCards);
+    clearTable();
 
 })

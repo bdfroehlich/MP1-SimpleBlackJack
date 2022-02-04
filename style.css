@@ -24,11 +24,12 @@ div {
 
 .dealer-cards, .player-cards {
     position: relative;
-    width: 90%;
+    width: 95%;
     height: 30%;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 0em;
 }
 
 body {
@@ -39,9 +40,16 @@ body {
     flex-wrap: wrap;
 }
 
-.player-text, .dealer-text {
+.dealer-text {
     position: absolute;
-    top: 0px;
+    top: 2.75em;
+    text-align: center;
+    color: wheat;
+}
+
+.player-text {
+    position: absolute;
+    bottom: 4em;
     text-align: center;
     color: wheat;
 }
@@ -51,10 +59,10 @@ body {
     padding-right: 3em;
 }
 
-.deck-cards, .dealer-total, .player-details {
+.outcome, .player-details {
     position: relative;
-    width: 27%;
-    height: 30%;
+    width: 23%;
+    height: 20%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -66,12 +74,24 @@ body {
     flex-wrap: wrap;
 }
 
-.player-total, .player-currency, .player-status {
+.player-total, .player-currency, .hand-outcome {
     width: 90%;
-    text-align: center;
 }
 
 .player-total, .player-currency, .player-total-text {
     color: wheat;
 }
 
+.bet-div {
+    min-width: 100%;
+    max-height: 5vh;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0em;
+}
+
+.outcome-text {
+    font-weight: bold;
+    color: red;
+    text-align: center;
+}
