@@ -15,14 +15,21 @@ const playerTotal = document.querySelector(".player-total");
 const outcomeText = document.querySelector(".outcome-text");
 
 
-//***deal card & image render functions***///
+//***GAME LOGIC & FUNCTIONALITY***//
+
+//create image element associated with first card off top of deck
 function dealPlayerCard(){
-    //create image element associated with first card off top of deck
     var createImage = document.createElement("img");
     createImage.src = getPlayerCard(drawTopCard());
     document.querySelector('.player-cards').appendChild(createImage);
 }
 
+//updating players total weighted value of cards in hand to the DOM
+function updatePlayerTotal(){
+    document.querySelector(".player-total").innerHTML = 'Player Total: ' + updateTotal(playerArray)
+}
+
+//create image element for dealer associated with first card off top of deck (one of the two cards called in dealCards will be dealt face down)
 function dealDealerCard(cardIsFaceUp = true){
     var createImage = document.createElement("img");
     var card = drawTopCard();
@@ -31,7 +38,7 @@ function dealDealerCard(cardIsFaceUp = true){
     document.querySelector('.dealer-cards').appendChild(createImage);
 }
 
-
+//allows the player to hit (get) an additional card if necessary and checks players total weighted value
 function hitCard(){
     if(canHit == true){
         var createImage = document.createElement("img");
@@ -42,11 +49,12 @@ function hitCard(){
     }
 }
 
-
+//player can stand (stop hitting) at which time the dealer will hit or show their cards to end the round
 function stand(){
     canHit = false;
 }
 
+//check total weighted value of cards in hand
 function updateTotal(array){
     let sum = 0;
     for(let i=0; i < array.length; i++){
@@ -56,6 +64,7 @@ function updateTotal(array){
     return sum;
 }
 
+//check total weighted value of cards in hand and display win/loss on screen
 function checkTotal(){
     if (updateTotal(playerArray) > 21)
     {
@@ -65,10 +74,8 @@ function checkTotal(){
 }
 
 
-function updatePlayerTotal(){
-    document.querySelector(".player-total").innerHTML = 'Player Total: ' + updateTotal(playerArray)
-}
 
+//function to create new deck and shuffle again when new round is started
 function refreshDeck(){
     deck = new Deck();
     deck.shuffleDeck();
