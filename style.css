@@ -1,7 +1,7 @@
 div {
-    border: 2px solid rgb(0, 0, 0);
+    /* border: 2px solid rgb(0, 0, 0); */
     margin: auto;
-    text-align: center;
+    /* text-align: center; */
 }
 
 .button-div {
@@ -22,15 +22,29 @@ div {
     height: 90vh;
 }
 
+.deck-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .dealer-cards, .player-cards {
     position: relative;
-    width: 95%;
+    width: 80%;
     height: 30%;
     display: flex;
     align-items: center;
     justify-content: center;
+    /* margin-top: 0em; */
+}
+
+.dealer-cards{
+    margin-bottom: 0em;
+}
+.player-cards{
     margin-top: 0em;
 }
+
 
 body {
     background-color: #35654d ;
@@ -40,7 +54,7 @@ body {
     flex-wrap: wrap;
 }
 
-.dealer-text {
+/* .dealer-text {
     position: absolute;
     top: 2.75em;
     text-align: center;
@@ -52,7 +66,7 @@ body {
     bottom: 4em;
     text-align: center;
     color: wheat;
-}
+} */
 
 .deal, .hit, .stand, .newround {
     padding-left: 3em;
@@ -77,9 +91,11 @@ body {
 
 .player-total, .player-currency, .player-bet {
     display: flex;
-    width: 60%;
+    width: 70%;
     height: 20%;
+    justify-content: end;
 }
+
 
 .hand-outcome {
     width: 90%;
@@ -98,4 +114,9 @@ body {
     font-weight: bold;
     color: red;
     text-align: center;
+}
+
+.dealer-text, .player-text {
+    width: fit-content;
+    color: wheat;
 }
