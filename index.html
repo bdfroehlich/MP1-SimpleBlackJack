@@ -41,12 +41,12 @@
         <div class="player-cards">
         </div>
         <div class="bet-div">
-          <div>
-            <label for="bet">Place your bet: $</label>
-          </div>
-          <div>
-            <input type="text" class="bet-control" id="bet" size="2">
-          </div>
+          <div class="form-div">
+            <form class="form-div" action="#" id="updateBet">
+              <div><label for="bet">Place your bet!</label><br></div>
+              <div><input type="number" id="bet" name="updateBet" size="2"><br></div>
+              <div><input type="submit" value="Submit" onClick="updateBet()"></div>
+            </form>
         </div>
     </div>
   </body>
