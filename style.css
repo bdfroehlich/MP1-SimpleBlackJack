@@ -72,15 +72,19 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    color: wheat;
 }
 
-.player-total, .player-currency, .hand-outcome {
+.player-total, .player-currency, .player-bet {
+    display: flex;
+    width: 60%;
+    height: 20%;
+}
+
+.hand-outcome {
     width: 90%;
 }
 
-.player-total, .player-currency, .player-total-text {
-    color: wheat;
-}
 
 .bet-div {
     min-width: 100%;
