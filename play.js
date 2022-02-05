@@ -24,6 +24,11 @@ function getCurrency(){
     document.querySelector(".player-currency-text").innerHTML = runningTotal;
 }
 
+function updateBet() {
+    var bet = document.getElementById("bet").form.id;
+    document.getElementById("player-bet-text").innerHTML = bet;
+    console.log("bet accepted")
+}
 
 
 //*** PLAYER ***//
