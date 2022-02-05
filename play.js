@@ -4,7 +4,9 @@ deck.shuffleDeck();
 
 var isDealClicked = false;
 var canPlayerHit = false;
-var runningTotal = '2000';
+var canPlayerStand = false;
+var hasBet = false;
+var currencyTotal = '2000';
 
 
 let playerArray = [];
@@ -19,19 +21,21 @@ const currency = document.querySelector(".player-currency-text");
 
 
 //*** GAME LOGIC & FUNCTIONALITY ***//
-
 function getCurrency(){
-    document.querySelector(".player-currency-text").innerHTML = runningTotal;
+    currency.innerText = currencyTotal;
 }
 
 function updateBet() {
-    var bet = document.getElementById("bet").form.id;
-    document.getElementById("player-bet-text").innerHTML = bet;
-    console.log("bet accepted")
+    if(hasBet == false){
+        var bet = document.getElementById("bet").value;
+        document.querySelector(".player-bet-text").innerHTML = bet;
+        hasBet = true;
+    }
 }
 
 
 //*** PLAYER ***//
+
 //create image element associated with first card off top of deck
 function dealPlayerCard(){
     var createImage = document.createElement("img");
@@ -41,7 +45,7 @@ function dealPlayerCard(){
 
 //updating players total weighted value of cards in hand to the DOM
 function updatePlayerTotal(){
-    document.querySelector(".player-total-text").innerHTML = updateTotal(playerArray)
+    playerTotal.innerHTML = updateTotal(playerArray)
 }
 
 //allows the player to hit (get) an additional card if necessary and checks players total weighted value
@@ -81,23 +85,26 @@ function dealerHit(){
     if(updateTotal(dealerArray) < 17){
         do {
             dealDealerCard(true);
+            compareTotals();
             checkDealerTotal();
             updateTotal(dealerArray);
         } while (updateTotal(dealerArray) < 17);
     } else {
+        compareTotals();
         checkDealerTotal();
     }
 }
 
 //player can stand (stop hitting) at which time the dealer will hit or show their cards to end the round
 function stand(){
+    if(canPlayerStand == true){
     canPlayerHit = false;
     showDealerCard();
     if(updateTotal(dealerArray) > updateTotal(playerArray)){
-        document.querySelector(".outcome-text").innerText = "Dealer wins! Start New Round";
+        outcomeText.innerText = "Dealer wins! Start New Round";
     } else {
     dealerHit();
-    }
+    }}
 }
 
 //check total weighted value of cards in hand
@@ -117,16 +124,16 @@ function checkPlayerTotal(){
     if (updateTotal(playerArray) > 21)
     {
         showDealerCard();
-        document.querySelector(".outcome-text").innerText = "Dealer wins! Start New Round";
+        outcomeText.innerText = "Dealer wins! Start New Round";
         canPlayerHit = false;
     } else if (updateTotal(playerArray) == 21) {
         if(updateTotal(playerArray) == updateTotal(dealerArray)){
             showDealerCard();
-            document.querySelector(".outcome-text").innerText = "It's a tie! You get your bet back.";
+            outcomeText.innerText = "It's a tie! You get your bet back.";
             canPlayerHit = false;
         } else {
             showDealerCard();
-            document.querySelector(".outcome-text").innerText = "You have won this round!";
+            outcomeText.innerText = "You have won this round!";
             canPlayerHit = false;
         }
     }
@@ -135,19 +142,21 @@ function checkPlayerTotal(){
 function checkDealerTotal(){
     if (updateTotal(dealerArray) > 21)
     {
-        document.querySelector(".outcome-text").innerText = "You have won this round!";
+        outcomeText.innerText = "You have won this round!";
     } else if (updateTotal(dealerArray) == 21){
-        document.querySelector(".outcome-text").innerText = "Dealer wins! Start New Round";
+        outcomeText.innerText = "Dealer wins! Start New Round";
+    } else if (updateTotal(dealerArray) > 17 && updateTotal(dealerArray) <21){
+        outcomeText.innerText = "Dealer wins! Start New Round";
     }
 }
 
 function compareTotals(){
     if (updateTotal(playerArray) > updateTotal(dealerArray)){
-        document.querySelector(".outcome-text").innerText = "You have won this round!";
+        outcomeText.innerText = "You have won this round!";
     } else if (updateTotal(playerArray) < updateTotal(dealerArray)) {
-        document.querySelector(".outcome-text").innerText = "Dealer wins! Start New Round";
+        outcomeText.innerText = "Dealer wins! Start New Round";
     } else if (updateTotal(playerArray) = updateTotal(dealerArray)) {
-        document.querySelector(".outcome-text").innerText = "It's a tie! You get your bet back.";
+        outcomeText.innerText = "It's a tie! You get your bet back.";
     }
 }
 
@@ -160,17 +169,20 @@ function refreshDeck(){
 
 //deal intial cards to player and dealer
 var dealCards = function(){
-    dealPlayerCard();
-    dealDealerCard(false);
-    dealPlayerCard();
-    dealDealerCard();
-    
-    if(isDealClicked == false) { 
-        this.removeEventListener("click", dealCards);
+    if (hasBet == true){
+        dealPlayerCard();
+        dealDealerCard(false);
+        dealPlayerCard();
+        dealDealerCard();
+        
+        if(isDealClicked == false) { 
+            this.removeEventListener("click", dealCards);
+        }
+        updatePlayerTotal();
+        checkPlayerTotal();
+        canPlayerHit = true;
+        canPlayerStand = true;
     }
-    updatePlayerTotal();
-    checkPlayerTotal();
-    canPlayerHit = true;
 }
 
 //clear table - remove card images, player total, hand outcome, refresh the deck and empty dealer and player array
@@ -179,16 +191,17 @@ function clearTable(){
     playerCards.innerHTML = "";
     playerTotal.innerText = "";
     outcomeText.innerText = "";
-
-
-
+    currency.innerText = currencyTotal;
     refreshDeck();
     playerArray = [];
     dealerArray = [];
-
+    canPlayerStand = false;
+    canPlayerHit = false;
+    hasBet = false;
 }
 
 //*** HANDLERS ***//
+
 document.querySelector('.deal').addEventListener("click", dealCards);
 document.querySelector('.hit').addEventListener("click", playerHit);
 document.querySelector('.stand').addEventListener("click", stand);
@@ -196,5 +209,9 @@ document.querySelector('.newround').addEventListener("click", function(){
     document.querySelector('.deal').addEventListener("click", dealCards);
     clearTable();
 })
-currency.addEventListener("load", getCurrency())
+document.querySelector('#bet-submit').addEventListener("click", updateBet);
+
+
+//*** ON LOAD ***//
+getCurrency();
 
