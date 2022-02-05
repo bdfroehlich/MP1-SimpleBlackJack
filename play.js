@@ -4,7 +4,7 @@ deck.shuffleDeck();
 
 var isDealClicked = false;
 var canPlayerHit = false;
-var runningTotal = 2000;
+var runningTotal = '2000';
 
 
 let playerArray = [];
@@ -15,9 +15,16 @@ const dealerCards = document.querySelector(".dealer-cards");
 const playerCards = document.querySelector(".player-cards");
 const playerTotal = document.querySelector(".player-total-text");
 const outcomeText = document.querySelector(".outcome-text");
+const currency = document.querySelector(".player-currency-text");
 
 
 //*** GAME LOGIC & FUNCTIONALITY ***//
+
+function getCurrency(){
+    document.querySelector(".player-currency-text").innerHTML = runningTotal;
+}
+
+
 
 //*** PLAYER ***//
 //create image element associated with first card off top of deck
@@ -184,5 +191,5 @@ document.querySelector('.newround').addEventListener("click", function(){
     document.querySelector('.deal').addEventListener("click", dealCards);
     clearTable();
 })
-
+currency.addEventListener("load", getCurrency())
 
