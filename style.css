@@ -1,7 +1,6 @@
 div {
-    /* border: 2px solid rgb(0, 0, 0); */
+    border: 2px solid rgb(0, 0, 0);
     margin: auto;
-    /* text-align: center; */
 }
 
 .button-div {
@@ -35,7 +34,6 @@ div {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* margin-top: 0em; */
 }
 
 .dealer-cards{
@@ -53,20 +51,6 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
 }
-
-/* .dealer-text {
-    position: absolute;
-    top: 2.75em;
-    text-align: center;
-    color: wheat;
-}
-
-.player-text {
-    position: absolute;
-    bottom: 4em;
-    text-align: center;
-    color: wheat;
-} */
 
 .deal, .hit, .stand, .newround {
     padding-left: 3em;
@@ -103,7 +87,7 @@ body {
 
 
 .bet-div {
-    min-width: 100%;
+    min-width: 30%;
     max-height: 5vh;
     display: flex;
     justify-content: center;
