@@ -4,6 +4,7 @@ deck.shuffleDeck();
 
 var isDealClicked = false;
 var canPlayerHit = false;
+var runningTotal = 2000;
 
 
 let playerArray = [];
@@ -12,7 +13,7 @@ let dealerArray = [];
 //*** HTML SELECTOR VARIABLES ***///
 const dealerCards = document.querySelector(".dealer-cards");
 const playerCards = document.querySelector(".player-cards");
-const playerTotal = document.querySelector(".player-total");
+const playerTotal = document.querySelector(".player-total-text");
 const outcomeText = document.querySelector(".outcome-text");
 
 
@@ -76,8 +77,6 @@ function dealerHit(){
     }
 }
 
-
-
 //player can stand (stop hitting) at which time the dealer will hit or show their cards to end the round
 function stand(){
     canPlayerHit = false;
@@ -105,6 +104,7 @@ function updateTotal(array){
 function checkPlayerTotal(){
     if (updateTotal(playerArray) > 21)
     {
+        showDealerCard();
         document.querySelector(".outcome-text").innerText = "Dealer wins! Start New Round";
         canPlayerHit = false;
     } else if (updateTotal(playerArray) == 21) {
@@ -168,6 +168,8 @@ function clearTable(){
     playerTotal.innerText = "";
     outcomeText.innerText = "";
 
+
+
     refreshDeck();
     playerArray = [];
     dealerArray = [];
@@ -182,3 +184,5 @@ document.querySelector('.newround').addEventListener("click", function(){
     document.querySelector('.deal').addEventListener("click", dealCards);
     clearTable();
 })
+
+
