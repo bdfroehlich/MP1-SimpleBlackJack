@@ -28,7 +28,7 @@ function dealPlayerCard(){
 
 //updating players total weighted value of cards in hand to the DOM
 function updatePlayerTotal(){
-    document.querySelector(".player-total").innerHTML = 'Player Total: ' + updateTotal(playerArray)
+    document.querySelector(".player-total-text").innerHTML = updateTotal(playerArray)
 }
 
 //allows the player to hit (get) an additional card if necessary and checks players total weighted value
