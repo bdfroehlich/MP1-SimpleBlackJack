@@ -66,11 +66,11 @@ function showDealerCard(){
 function dealerHit(){
     updateTotal(dealerArray)
     if(updateTotal(dealerArray) < 17){
-    do {
-        dealDealerCard(true);
-        checkDealerTotal();
-        updateTotal(dealerArray);
-      } while (updateTotal(dealerArray) < 17);
+        do {
+            dealDealerCard(true);
+            checkDealerTotal();
+            updateTotal(dealerArray);
+        } while (updateTotal(dealerArray) < 17);
     } else {
         checkDealerTotal();
     }
@@ -81,8 +81,12 @@ function dealerHit(){
 //player can stand (stop hitting) at which time the dealer will hit or show their cards to end the round
 function stand(){
     canPlayerHit = false;
-
+    showDealerCard();
+    if(updateTotal(dealerArray) > updateTotal(playerArray)){
+        document.querySelector(".outcome-text").innerText = "Dealer wins! Start New Round";
+    } else {
     dealerHit();
+    }
 }
 
 //check total weighted value of cards in hand
@@ -95,12 +99,24 @@ function updateTotal(array){
     return sum;
 }
 
+//*** COMPARATIVE LOGIC & VALUE CHECKING ***//
+
 //check total weighted value of cards in hand and display win/loss on screen
 function checkPlayerTotal(){
     if (updateTotal(playerArray) > 21)
     {
         document.querySelector(".outcome-text").innerText = "Dealer wins! Start New Round";
         canPlayerHit = false;
+    } else if (updateTotal(playerArray) == 21) {
+        if(updateTotal(playerArray) == updateTotal(dealerArray)){
+            showDealerCard();
+            document.querySelector(".outcome-text").innerText = "It's a tie! You get your bet back.";
+            canPlayerHit = false;
+        } else {
+            showDealerCard();
+            document.querySelector(".outcome-text").innerText = "You have won this round!";
+            canPlayerHit = false;
+        }
     }
 }
 
@@ -108,12 +124,18 @@ function checkDealerTotal(){
     if (updateTotal(dealerArray) > 21)
     {
         document.querySelector(".outcome-text").innerText = "You have won this round!";
-    } else if (updateTotal(dealerArray) > 17 && updateTotal(dealerArray) < 21 ) {
-        if (updateTotal(playerArray) > updateTotal(dealerArray)){
-            document.querySelector(".outcome-text").innerText = "You have won this round!";
-        } else if (updateTotal(playerArray) < updateTotal(dealerArray)) {
-            document.querySelector(".outcome-text").innerText = "Dealer wins! Start New Round";
-        }
+    } else if (updateTotal(dealerArray) == 21){
+        document.querySelector(".outcome-text").innerText = "Dealer wins! Start New Round";
+    }
+}
+
+function compareTotals(){
+    if (updateTotal(playerArray) > updateTotal(dealerArray)){
+        document.querySelector(".outcome-text").innerText = "You have won this round!";
+    } else if (updateTotal(playerArray) < updateTotal(dealerArray)) {
+        document.querySelector(".outcome-text").innerText = "Dealer wins! Start New Round";
+    } else if (updateTotal(playerArray) = updateTotal(dealerArray)) {
+        document.querySelector(".outcome-text").innerText = "It's a tie! You get your bet back.";
     }
 }
 
@@ -135,6 +157,7 @@ var dealCards = function(){
         this.removeEventListener("click", dealCards);
     }
     updatePlayerTotal();
+    checkPlayerTotal();
     canPlayerHit = true;
 }
 
@@ -158,5 +181,4 @@ document.querySelector('.stand').addEventListener("click", stand);
 document.querySelector('.newround').addEventListener("click", function(){
     document.querySelector('.deal').addEventListener("click", dealCards);
     clearTable();
-
 })
