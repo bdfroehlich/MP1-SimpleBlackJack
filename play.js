@@ -3,7 +3,7 @@ var deck = new Deck();
 deck.shuffleDeck();
 
 var isDealClicked = false;
-var canHit = false;
+var canPlayerHit = false;
 
 
 let playerArray = [];
@@ -33,18 +33,16 @@ function updatePlayerTotal(){
 
 //allows the player to hit (get) an additional card if necessary and checks players total weighted value
 function playerHit(){
-    if(canHit == true){
-        // var createImage = document.createElement("img");
-        // createImage.src = getPlayerCard(drawTopCard());
+    if(canPlayerHit == true){
         dealPlayerCard()
         updatePlayerTotal();
-        // document.querySelector('.player-cards').appendChild(createImage);
         checkPlayerTotal()
     }
 }
 
 
 //*** DEALER ***//
+
 //create image element for dealer associated with first card off top of deck (one of the two cards called in dealCards will be dealt face down)
 function dealDealerCard(cardIsFaceUp = true){
     var createImage = document.createElement("img");
@@ -54,14 +52,36 @@ function dealDealerCard(cardIsFaceUp = true){
     document.querySelector('.dealer-cards').appendChild(createImage);
 }
 
-function dealerHit(){
- dealDealerCard(true);
+//render all card images face up after player has hit stand
+function showDealerCard(){
+    dealerCards.innerHTML = "";
+    for (let i=0; i < dealerArray.length; i++){
+        var createImage = document.createElement("img");
+        createImage.src = `assets/${dealerArray[i].value}_of_${dealerArray[i].suit}.png`;
+        document.querySelector('.dealer-cards').appendChild(createImage);
+    }
 }
+
+//dealerhit function to be performed after player has hit stand
+function dealerHit(){
+    updateTotal(dealerArray)
+    if(updateTotal(dealerArray) < 17){
+    do {
+        dealDealerCard(true);
+        checkDealerTotal();
+        updateTotal(dealerArray);
+      } while (updateTotal(dealerArray) < 17);
+    } else {
+        checkDealerTotal();
+    }
+}
+
 
 
 //player can stand (stop hitting) at which time the dealer will hit or show their cards to end the round
 function stand(){
-    canHit = false;
+    canPlayerHit = false;
+
     dealerHit();
 }
 
@@ -80,7 +100,7 @@ function checkPlayerTotal(){
     if (updateTotal(playerArray) > 21)
     {
         document.querySelector(".outcome-text").innerText = "Dealer wins! Start New Round";
-        canHit = false;
+        canPlayerHit = false;
     }
 }
 
@@ -88,6 +108,12 @@ function checkDealerTotal(){
     if (updateTotal(dealerArray) > 21)
     {
         document.querySelector(".outcome-text").innerText = "You have won this round!";
+    } else if (updateTotal(dealerArray) > 17 && updateTotal(dealerArray) < 21 ) {
+        if (updateTotal(playerArray) > updateTotal(dealerArray)){
+            document.querySelector(".outcome-text").innerText = "You have won this round!";
+        } else if (updateTotal(playerArray) < updateTotal(dealerArray)) {
+            document.querySelector(".outcome-text").innerText = "Dealer wins! Start New Round";
+        }
     }
 }
 
@@ -109,7 +135,7 @@ var dealCards = function(){
         this.removeEventListener("click", dealCards);
     }
     updatePlayerTotal();
-    canHit = true;
+    canPlayerHit = true;
 }
 
 //clear table - remove card images, player total, hand outcome, refresh the deck and empty dealer and player array
