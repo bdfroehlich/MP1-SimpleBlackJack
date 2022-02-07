@@ -7,34 +7,50 @@ var canPlayerHit = false;
 var canPlayerStand = false;
 var hasBet = false;
 var canStartNewRound = false;
-var currencyTotal = '2000';
+var currencyTotal = "2000";
+var winnings = "none";
 
 
 let playerArray = [];
 let dealerArray = [];
 
-//*** HTML SELECTOR VARIABLES & CONSTANTS ***///
+//*** HTML SELECTOR CONSTANTS ***///
 const dealerCards = document.querySelector(".dealer-cards");
 const playerCards = document.querySelector(".player-cards");
 const playerTotal = document.querySelector(".player-total-text");
 const outcomeText = document.querySelector(".outcome-text");
 const currency = document.querySelector(".player-currency-text");
-const playerbet =  document.querySelector(".player-bet-text");
+const playerBet =  document.querySelector(".player-bet-text");
+const placeBetText = document.getElementById("alert");
 
 //*** GAME LOGIC & FUNCTIONALITY ***//
 function getCurrency(){
     currency.innerText = currencyTotal;
 }
 
-function updateBet() {
+function getBet() {
     if(hasBet == false){
         var bet = document.getElementById("bet").value;
-        playerbet.innerHTML = bet;
+        playerBet.innerHTML = bet;
         hasBet = true;
         canStartNewRound = false;
         currency.innerText = currencyTotal - bet.toString();
     }
-    return currencyTotal = currency.innerText;
+    return playerBet.innerHTML
+}
+
+function updateCurrency() {
+    var betNum = parseInt(getBet());
+    var newCurrencyTotal = currencyNum - getBet();
+    if(winnings = "1"){
+        currency.innerText = (newCurrencyTotal + (betNum*2)).toString();
+    } else if (winnings = "1.5"){
+        currency.innerText = (newCurrencyTotal + (betNum*2.5)).toString();
+    } else if (winning = "lose"){
+        currency.innerText = (newCurrencyTotal - betNum).toString();
+    } else if (winning = "tie") {
+        currency.innerText = (newCurrencyTotal + betNum).toString();
+    }
 }
 
 
@@ -90,9 +106,7 @@ function dealerHit(){
             } while (updateTotal(dealerArray) < 17);
         } else {
             checkDealerTotal();
-            compareTotals();
     }
-    compareTotals();
     checkDealerTotal();
 }
 
@@ -105,6 +119,8 @@ function stand(){
         outcomeText.innerText = "Dealer wins! You lost your bet. Click start new round.";
         canStartNewRound = true;
         canPlayerStand = false;
+        winnings = "lose";
+        updateCurrency();
     } else {
     dealerHit();
     }}
@@ -131,6 +147,8 @@ function checkPlayerTotal(){
         canPlayerHit = false;
         canStartNewRound = true;
         canPlayerStand = false;
+        winnings = "lose";
+        updateCurrency();
     } else if (updateTotal(playerArray) == 21) {
         showDealerCard();
         if(updateTotal(playerArray) == updateTotal(dealerArray)){
@@ -138,6 +156,8 @@ function checkPlayerTotal(){
             canPlayerHit = false;
             canStartNewRound = true;
             canPlayerStand = false;
+            winnings = "tie";
+            updateCurrency();
         } else if (updateTotal(playerArray) == 21 && updateTotal(dealerArray) < 17 ) {
             dealerHit();
             canPlayerHit = false;
@@ -149,21 +169,22 @@ function checkDealerTotal(){
     if (updateTotal(dealerArray) > 21)
     {
         outcomeText.innerText = "You have won your bet! Click start new round.";
-        canStartNewRound = true;
-        canPlayerStand = false;
+        winnings = "1";
     } else if (updateTotal(dealerArray) == 21 && updateTotal(playerArray) !== 21){
         outcomeText.innerText = "Dealer wins! You lost your bet. Click start new round.";
-        canStartNewRound = true;
-        canPlayerStand = false;
+        winnings = "lose";
     } else if (updateTotal(dealerArray) > 17 && updateTotal(dealerArray) > updateTotal(playerArray)){
         outcomeText.innerText = "Dealer wins! You lost your bet. Click start new round.";
-        canStartNewRound = true;
-        canPlayerStand = false;
+        winnings = "lose";
     } else if (updateTotal(dealerArray) == 21 && updateTotal(playerArray) == 21){
         outcomeText.innerText = "It's a tie! You get your bet back. Click start new round.";
-        canStartNewRound = true;
-        canPlayerStand = false;
+        winnings = "tie";
+    } else {
+        compareTotals();
     }
+    canStartNewRound = true;
+    canPlayerStand = false;
+    updateCurrency();
 }
 
 function compareTotals(){
@@ -171,17 +192,17 @@ function compareTotals(){
         checkDealerTotal()
     } else if (updateTotal(playerArray) > updateTotal(dealerArray)){
         outcomeText.innerText = "You have won your bet! Click start new round.";
-        canStartNewRound = true;
-        canPlayerStand = false;
+        winnings = "1";
     } else if (updateTotal(playerArray) < updateTotal(dealerArray)) {
         outcomeText.innerText = "Dealer wins! You lost your bet. Click start new round.";
-        canStartNewRound = true;
-        canPlayerStand = false;
+        winnings = "lose";
     } else if (updateTotal(playerArray) == updateTotal(dealerArray)) {
         outcomeText.innerText = "It's a tie! You get your bet back. Click start new round.";
-        canStartNewRound = true;
-        canPlayerStand = false;
+        winnings = "tie";
     }
+    canStartNewRound = true;
+    canPlayerStand = false;
+    updateCurrency();
 }
 
 
@@ -211,10 +232,13 @@ var dealCards = function(){
             canPlayerHit = false;
             canPlayerStand = false;
             canStartNewRound = true;
+            winnings = "1.5";
+            updateCurrency();
         }
 
         canPlayerHit = true;
         canPlayerStand = true;
+        placeBetText.innerText = "";
 
     }
 }
@@ -226,7 +250,7 @@ function clearTable(){
         playerCards.innerHTML = "";
         playerTotal.innerText = "";
         outcomeText.innerText = "";
-        playerbet.innerHTML = "";
+        playerBet.innerHTML = "";
         refreshDeck();
         document.getElementById("betform").reset();
 
@@ -236,6 +260,8 @@ function clearTable(){
         canPlayerStand = false;
         canPlayerHit = false;
         hasBet = false;
+
+        placeBetText.innerText = "Submit your bet below & deal!";
     }
 }
 
@@ -248,7 +274,7 @@ document.querySelector('.newround').addEventListener("click", function(){
     document.querySelector('.deal').addEventListener("click", dealCards);
     clearTable();
 })
-document.querySelector('#bet-submit').addEventListener("click", updateBet);
+document.querySelector('#bet-submit').addEventListener("click", getBet);
 
 
 //*** ON LOAD ***//

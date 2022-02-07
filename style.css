@@ -1,5 +1,5 @@
 div {
-    /* border: 2px solid rgb(0, 0, 0); */
+    border: 1px solid rgb(0, 0, 0);
     margin: auto;
 }
 
@@ -74,7 +74,7 @@ body {
 
 .player-total, .player-currency, .player-bet {
     display: flex;
-    width: 70%;
+    width: 80%;
     height: 20%;
     justify-content: end;
 }
@@ -117,4 +117,15 @@ body {
 
 input[type='number']{
     width: 80px;
+}
+
+#alert {
+    position: absolute;
+    color: wheat;
+}
+
+#zero-alert {
+    position: absolute;
+    color: wheat;
+    top: 30%;
 }
