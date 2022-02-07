@@ -6,20 +6,20 @@ var isDealClicked = false;
 var canPlayerHit = false;
 var canPlayerStand = false;
 var hasBet = false;
+var canStartNewRound = false;
 var currencyTotal = '2000';
 
 
 let playerArray = [];
 let dealerArray = [];
 
-//*** HTML SELECTOR VARIABLES ***///
+//*** HTML SELECTOR VARIABLES & CONSTANTS ***///
 const dealerCards = document.querySelector(".dealer-cards");
 const playerCards = document.querySelector(".player-cards");
 const playerTotal = document.querySelector(".player-total-text");
 const outcomeText = document.querySelector(".outcome-text");
 const currency = document.querySelector(".player-currency-text");
 const playerbet =  document.querySelector(".player-bet-text");
-
 
 //*** GAME LOGIC & FUNCTIONALITY ***//
 function getCurrency(){
@@ -31,6 +31,7 @@ function updateBet() {
         var bet = document.getElementById("bet").value;
         playerbet.innerHTML = bet;
         hasBet = true;
+        canStartNewRound = false;
         currency.innerText = currencyTotal - bet.toString();
     }
     return currencyTotal = currency.innerText;
@@ -38,7 +39,6 @@ function updateBet() {
 
 
 //*** PLAYER ***//
-
 //create image element associated with first card off top of deck
 function dealPlayerCard(){
     var createImage = document.createElement("img");
@@ -62,7 +62,6 @@ function playerHit(){
 
 
 //*** DEALER ***//
-
 //create image element for dealer associated with first card off top of deck (one of the two cards called in dealCards will be dealt face down)
 function dealDealerCard(cardIsFaceUp = true){
     var createImage = document.createElement("img");
@@ -104,7 +103,8 @@ function stand(){
     canPlayerHit = false;
     showDealerCard();
     if(updateTotal(dealerArray) > updateTotal(playerArray)){
-        outcomeText.innerText = "Dealer wins! Start New Round";
+        outcomeText.innerText = "Dealer wins! You lost your bet. Click start new round.";
+        canStartNewRound = true;
     } else {
     dealerHit();
     }}
@@ -127,16 +127,19 @@ function checkPlayerTotal(){
     if (updateTotal(playerArray) > 21)
     {
         showDealerCard();
-        outcomeText.innerText = "Dealer wins! Start New Round";
+        outcomeText.innerText = "Dealer wins! You lost your bet. Click start new round.";
         canPlayerHit = false;
+        canStartNewRound = true;
     } else if (updateTotal(playerArray) == 21) {
         if(updateTotal(playerArray) == updateTotal(dealerArray)){
             showDealerCard();
-            outcomeText.innerText = "It's a tie! You get your bet back.";
+            outcomeText.innerText = "It's a tie! You get your bet back. Click start new round.";
             canPlayerHit = false;
-        } else {
+            canStartNewRound = true;
+        } else if (updateTotal(playerArray) == 21 && updateTotal(dealerArray) < 17 ) {
             showDealerCard();
-            outcomeText.innerText = "You have won this round!";
+            dealerHit();
+            // outcomeText.innerText = "BLACKJACK! You win 1.5 times your bet. Click start new round.";
             canPlayerHit = false;
         }
     }
@@ -145,21 +148,27 @@ function checkPlayerTotal(){
 function checkDealerTotal(){
     if (updateTotal(dealerArray) > 21)
     {
-        outcomeText.innerText = "You have won this round!";
+        outcomeText.innerText = "You have won your bet! Click start new round.";
+        canStartNewRound = true;
     } else if (updateTotal(dealerArray) == 21){
-        outcomeText.innerText = "Dealer wins! Start New Round";
+        outcomeText.innerText = "Dealer wins! You lost your bet. Click start new round.";
+        canStartNewRound = true;
     } else if (updateTotal(dealerArray) > 17 && updateTotal(dealerArray) <21){
-        outcomeText.innerText = "Dealer wins! Start New Round";
+        outcomeText.innerText = "Dealer wins! You lost your bet. Click start new round.";
+        canStartNewRound = true;
     }
 }
 
 function compareTotals(){
     if (updateTotal(playerArray) > updateTotal(dealerArray)){
-        outcomeText.innerText = "You have won this round!";
+        outcomeText.innerText = "You have won your bet! Click start new round.";
+        canStartNewRound = true;
     } else if (updateTotal(playerArray) < updateTotal(dealerArray)) {
-        outcomeText.innerText = "Dealer wins! Start New Round";
-    } else if (updateTotal(playerArray) = updateTotal(dealerArray)) {
-        outcomeText.innerText = "It's a tie! You get your bet back.";
+        outcomeText.innerText = "Dealer wins! You lost your bet. Click start new round.";
+        canStartNewRound = true;
+    } else if (updateTotal(playerArray) == updateTotal(dealerArray)) {
+        outcomeText.innerText = "It's a tie! You get your bet back. Click start new round.";
+        canStartNewRound = true;
     }
 }
 
@@ -177,12 +186,21 @@ var dealCards = function(){
         dealDealerCard(false);
         dealPlayerCard();
         dealDealerCard();
-        
+
         if(isDealClicked == false) { 
             this.removeEventListener("click", dealCards);
         }
         updatePlayerTotal();
         checkPlayerTotal();
+
+        if(updateTotal(playerArray) == 21) {
+            showDealerCard();
+            outcomeText.innerText = "BLACKJACK! You win 1.5 times your bet. Click start new round.";
+            canPlayerHit = false;
+            canPlayerStand = false;
+            canStartNewRound == true;
+        }
+
         canPlayerHit = true;
         canPlayerStand = true;
 
@@ -191,21 +209,22 @@ var dealCards = function(){
 
 //clear table - remove card images, player total, hand outcome, refresh the deck and empty dealer and player array
 function clearTable(){
-    dealerCards.innerHTML = "";
-    playerCards.innerHTML = "";
-    playerTotal.innerText = "";
-    outcomeText.innerText = "";
-    playerbet.innerHTML = "";
-    // currency.innerText = currencyTotal;
-    refreshDeck();
-    document.getElementById("betform").reset();
+    if(canStartNewRound == true) {
+        dealerCards.innerHTML = "";
+        playerCards.innerHTML = "";
+        playerTotal.innerText = "";
+        outcomeText.innerText = "";
+        playerbet.innerHTML = "";
+        refreshDeck();
+        document.getElementById("betform").reset();
 
-    playerArray = [];
-    dealerArray = [];
+        playerArray = [];
+        dealerArray = [];
 
-    canPlayerStand = false;
-    canPlayerHit = false;
-    hasBet = false;
+        canPlayerStand = false;
+        canPlayerHit = false;
+        hasBet = false;
+    }
 }
 
 //*** HANDLERS ***//
