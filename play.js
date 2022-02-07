@@ -54,9 +54,9 @@ function updatePlayerTotal(){
 //allows the player to hit (get) an additional card if necessary and checks players total weighted value
 function playerHit(){
     if(canPlayerHit == true){
-        dealPlayerCard()
+        dealPlayerCard();
         updatePlayerTotal();
-        checkPlayerTotal()
+        checkPlayerTotal();
     }
 }
 
@@ -83,18 +83,17 @@ function showDealerCard(){
 
 //dealerhit function to be performed after player has hit stand
 function dealerHit(){
-    updateTotal(dealerArray)
     if(updateTotal(dealerArray) < 17){
-        do {
-            dealDealerCard(true);
-            compareTotals();
+            do {
+                dealDealerCard(true);
+                updateTotal(dealerArray);
+            } while (updateTotal(dealerArray) < 17);
+        } else {
             checkDealerTotal();
-            updateTotal(dealerArray);
-        } while (updateTotal(dealerArray) < 17);
-    } else {
-        compareTotals();
-        checkDealerTotal();
+            compareTotals();
     }
+    compareTotals();
+    checkDealerTotal();
 }
 
 //player can stand (stop hitting) at which time the dealer will hit or show their cards to end the round
@@ -105,6 +104,7 @@ function stand(){
     if(updateTotal(dealerArray) > updateTotal(playerArray)){
         outcomeText.innerText = "Dealer wins! You lost your bet. Click start new round.";
         canStartNewRound = true;
+        canPlayerStand = false;
     } else {
     dealerHit();
     }}
@@ -130,16 +130,16 @@ function checkPlayerTotal(){
         outcomeText.innerText = "Dealer wins! You lost your bet. Click start new round.";
         canPlayerHit = false;
         canStartNewRound = true;
+        canPlayerStand = false;
     } else if (updateTotal(playerArray) == 21) {
+        showDealerCard();
         if(updateTotal(playerArray) == updateTotal(dealerArray)){
-            showDealerCard();
             outcomeText.innerText = "It's a tie! You get your bet back. Click start new round.";
             canPlayerHit = false;
             canStartNewRound = true;
+            canPlayerStand = false;
         } else if (updateTotal(playerArray) == 21 && updateTotal(dealerArray) < 17 ) {
-            showDealerCard();
             dealerHit();
-            // outcomeText.innerText = "BLACKJACK! You win 1.5 times your bet. Click start new round.";
             canPlayerHit = false;
         }
     }
@@ -150,25 +150,37 @@ function checkDealerTotal(){
     {
         outcomeText.innerText = "You have won your bet! Click start new round.";
         canStartNewRound = true;
-    } else if (updateTotal(dealerArray) == 21){
+        canPlayerStand = false;
+    } else if (updateTotal(dealerArray) == 21 && updateTotal(playerArray) !== 21){
         outcomeText.innerText = "Dealer wins! You lost your bet. Click start new round.";
         canStartNewRound = true;
-    } else if (updateTotal(dealerArray) > 17 && updateTotal(dealerArray) <21){
+        canPlayerStand = false;
+    } else if (updateTotal(dealerArray) > 17 && updateTotal(dealerArray) > updateTotal(playerArray)){
         outcomeText.innerText = "Dealer wins! You lost your bet. Click start new round.";
         canStartNewRound = true;
+        canPlayerStand = false;
+    } else if (updateTotal(dealerArray) == 21 && updateTotal(playerArray) == 21){
+        outcomeText.innerText = "It's a tie! You get your bet back. Click start new round.";
+        canStartNewRound = true;
+        canPlayerStand = false;
     }
 }
 
 function compareTotals(){
-    if (updateTotal(playerArray) > updateTotal(dealerArray)){
+    if(updateTotal(dealerArray) > 21){
+        checkDealerTotal()
+    } else if (updateTotal(playerArray) > updateTotal(dealerArray)){
         outcomeText.innerText = "You have won your bet! Click start new round.";
         canStartNewRound = true;
+        canPlayerStand = false;
     } else if (updateTotal(playerArray) < updateTotal(dealerArray)) {
         outcomeText.innerText = "Dealer wins! You lost your bet. Click start new round.";
         canStartNewRound = true;
+        canPlayerStand = false;
     } else if (updateTotal(playerArray) == updateTotal(dealerArray)) {
         outcomeText.innerText = "It's a tie! You get your bet back. Click start new round.";
         canStartNewRound = true;
+        canPlayerStand = false;
     }
 }
 
@@ -198,7 +210,7 @@ var dealCards = function(){
             outcomeText.innerText = "BLACKJACK! You win 1.5 times your bet. Click start new round.";
             canPlayerHit = false;
             canPlayerStand = false;
-            canStartNewRound == true;
+            canStartNewRound = true;
         }
 
         canPlayerHit = true;
