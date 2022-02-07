@@ -18,6 +18,7 @@ const playerCards = document.querySelector(".player-cards");
 const playerTotal = document.querySelector(".player-total-text");
 const outcomeText = document.querySelector(".outcome-text");
 const currency = document.querySelector(".player-currency-text");
+const playerbet =  document.querySelector(".player-bet-text");
 
 
 //*** GAME LOGIC & FUNCTIONALITY ***//
@@ -28,9 +29,11 @@ function getCurrency(){
 function updateBet() {
     if(hasBet == false){
         var bet = document.getElementById("bet").value;
-        document.querySelector(".player-bet-text").innerHTML = bet;
+        playerbet.innerHTML = bet;
         hasBet = true;
+        currency.innerText = currencyTotal - bet.toString();
     }
+    return currencyTotal = currency.innerText;
 }
 
 
@@ -40,7 +43,7 @@ function updateBet() {
 function dealPlayerCard(){
     var createImage = document.createElement("img");
     createImage.src = getPlayerCard(drawTopCard());
-    document.querySelector('.player-cards').appendChild(createImage);
+    playerCards.appendChild(createImage);
 }
 
 //updating players total weighted value of cards in hand to the DOM
@@ -66,7 +69,7 @@ function dealDealerCard(cardIsFaceUp = true){
     var card = drawTopCard();
     card.cardIsFaceUp = cardIsFaceUp;
     createImage.src = getDealerCard(card);
-    document.querySelector('.dealer-cards').appendChild(createImage);
+    dealerCards.appendChild(createImage);
 }
 
 //render all card images face up after player has hit stand
@@ -75,7 +78,7 @@ function showDealerCard(){
     for (let i=0; i < dealerArray.length; i++){
         var createImage = document.createElement("img");
         createImage.src = `assets/${dealerArray[i].value}_of_${dealerArray[i].suit}.png`;
-        document.querySelector('.dealer-cards').appendChild(createImage);
+        dealerCards.appendChild(createImage);
     }
 }
 
@@ -182,6 +185,7 @@ var dealCards = function(){
         checkPlayerTotal();
         canPlayerHit = true;
         canPlayerStand = true;
+
     }
 }
 
@@ -191,10 +195,14 @@ function clearTable(){
     playerCards.innerHTML = "";
     playerTotal.innerText = "";
     outcomeText.innerText = "";
-    currency.innerText = currencyTotal;
+    playerbet.innerHTML = "";
+    // currency.innerText = currencyTotal;
     refreshDeck();
+    document.getElementById("betform").reset();
+
     playerArray = [];
     dealerArray = [];
+
     canPlayerStand = false;
     canPlayerHit = false;
     hasBet = false;
