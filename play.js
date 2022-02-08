@@ -30,24 +30,23 @@ function getCurrency(){
     canStartNewRound = false;
 }
 
-function checkCurrency(){
+function checkForZero(){
     if(currency.innerText == "0"){
         alertPlayer.innerText = "You have lost all your money! Ask the dealer for more by refreshing the page."
         outcomeText.innerText = "Dealer wins! You lost your bet."
+        canStartNewRound = false;
     }
 }
 
+
 function getBet() {
-    var bet = document.getElementById("bet").value;
         if(hasBet == false){
-                // if(bet.value > currency.innerText){
-                //     alertPlayer.innerText = "You can't bet more than you have!"
-                // } else if(bet.value < currency.innerText) {
+            var bet = document.getElementById("bet").value;
             playerBet.innerHTML = bet;
+            placeBetText.innerText = "";
             hasBet = true;
             canStartNewRound = false;
             currency.innerText = parseInt(currencyTotal) - bet;
-                // }
         }
     return playerBet.innerHTML
 }
@@ -58,15 +57,15 @@ function updateCurrency() {
     if(winnings == "1"){
         currency.innerText = (currencyTotalNum + betNum).toString();
     } else if (winnings == "1.5"){
-        currency.innerText = (currencyTotalNum + betNum).toString();
+        currency.innerText = (currencyTotalNum + (betNum*1.5)).toString();
     } else if (winnings == "lose"){
         currency.innerText = (currencyTotalNum - betNum).toString();
     } else if (winnings == "tie") {
-        currency.innerText = (currencyTotalNum + betNum).toString();
+        currency.innerText = currencyTotal;
     }
     canStartNewRound = true;
     currencyTotal = parseInt(currency.innerText);
-    checkCurrency();
+    checkForZero();
 }
 
 
@@ -120,8 +119,6 @@ function dealerHit(){
                 dealDealerCard(true);
                 updateTotal(dealerArray);
             } while (updateTotal(dealerArray) < 17);
-        } else {
-            checkDealerTotal();
     }
     updateTotal(dealerArray);
     checkDealerTotal();
@@ -178,6 +175,14 @@ function checkPlayerTotal(){
         } else if (updateTotal(playerArray) == 21 && updateTotal(dealerArray) < 17 ) {
             dealerHit();
             canPlayerHit = false;
+        } else if (updateTotal(playerArray) == 21 && updateTotal(dealerArray) > 17 ) {
+            dealerHit();
+            outcomeText.innerText = "You have won your bet! Click start new round.";
+            canPlayerHit = false;
+            canStartNewRound = true;
+            canPlayerStand = false;
+            winnings = "1";
+            updateCurrency();
         }
     }
 }
