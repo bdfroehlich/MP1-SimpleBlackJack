@@ -1,5 +1,10 @@
 # Simple Blackjack
 
+## Introduction
+
+Simple Blackjack was created as an elementary version of the original Blackjack poker game. Simple Blackjack will played between the dealer and one player. The player will place their bet at the beginning of each turn and upon submission of their bet can deal the initial hand and then hit or stand. All card values of Blackjack apply in Simple Blackjack except for the Ace card will only count as 11.
+
+
 Basic Blackjack Rules:
 (src = https://www.ildado.com/blackjack_rules.html)
 
@@ -11,5 +16,5 @@ If you make a total of 21 with the first two cards (a 10 or a face and an Ace), 
 
 If the player has a higher count than the dealer after the dealer hits the player wins an amount equal to their bet. Players with a lower count than the dealer lose their bet. If the dealer busts, the player wins. There are other betting options namely Insurance, Surrender, Double Down, Even Money and Split, but for for Simple Black Jack only the initial bet will be taken into account. The definitions of the other forms of betting can be found at the above linked source.
 
-In a typical game of Black Jack 
+In a typical game of Blackjack, if the player or dealer has an Ace in their hand it can equate to a value of 1 or 11. In Simple Blackjack an Ace will only be equal to 11.
 
