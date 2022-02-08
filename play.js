@@ -9,7 +9,6 @@ var hasBet = false;
 var canStartNewRound = false;
 var currencyTotal = "2000";
 var winnings = "none";
-var newCurrencyTotal
 
 
 let playerArray = [];
@@ -23,36 +22,51 @@ const outcomeText = document.querySelector(".outcome-text");
 const currency = document.querySelector(".player-currency-text");
 const playerBet =  document.querySelector(".player-bet-text");
 const placeBetText = document.getElementById("alert");
+const alertPlayer = document.getElementById("zero-alert");
 
 //*** GAME LOGIC & FUNCTIONALITY ***//
 function getCurrency(){
     currency.innerText = currencyTotal;
+    canStartNewRound = false;
+}
+
+function checkCurrency(){
+    if(currency.innerText == "0"){
+        alertPlayer.innerText = "You have lost all your money! Ask the dealer for more by refreshing the page."
+        outcomeText.innerText = "Dealer wins! You lost your bet."
+    }
 }
 
 function getBet() {
-    if(hasBet == false){
-        var bet = document.getElementById("bet").value;
-        playerBet.innerHTML = bet;
-        hasBet = true;
-        canStartNewRound = false;
-        currency.innerText = currencyTotal - bet.toString();
-    }
+    var bet = document.getElementById("bet").value;
+        if(hasBet == false){
+                // if(bet.value > currency.innerText){
+                //     alertPlayer.innerText = "You can't bet more than you have!"
+                // } else if(bet.value < currency.innerText) {
+            playerBet.innerHTML = bet;
+            hasBet = true;
+            canStartNewRound = false;
+            currency.innerText = parseInt(currencyTotal) - bet;
+                // }
+        }
     return playerBet.innerHTML
 }
 
 function updateCurrency() {
     var betNum = parseInt(getBet());
-    newCurrencyTotal = parseInt(currencyTotal);
-    if(winnings = "1"){
-        currency.innerText = (newCurrencyTotal + (betNum*2)).toString();
-    } else if (winnings = "1.5"){
-        currency.innerText = (newCurrencyTotal + (betNum*2.5)).toString();
-    } else if (winning = "lose"){
-        currency.innerText = (newCurrencyTotal - betNum).toString();
-    } else if (winning = "tie") {
-        currency.innerText = (newCurrencyTotal + betNum).toString();
+    var currencyTotalNum = parseInt(currencyTotal);
+    if(winnings == "1"){
+        currency.innerText = (currencyTotalNum + betNum).toString();
+    } else if (winnings == "1.5"){
+        currency.innerText = (currencyTotalNum + betNum).toString();
+    } else if (winnings == "lose"){
+        currency.innerText = (currencyTotalNum - betNum).toString();
+    } else if (winnings == "tie") {
+        currency.innerText = (currencyTotalNum + betNum).toString();
     }
     canStartNewRound = true;
+    currencyTotal = parseInt(currency.innerText);
+    checkCurrency();
 }
 
 
@@ -109,6 +123,7 @@ function dealerHit(){
         } else {
             checkDealerTotal();
     }
+    updateTotal(dealerArray);
     checkDealerTotal();
 }
 
