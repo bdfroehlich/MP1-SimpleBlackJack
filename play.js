@@ -7,7 +7,7 @@ var canPlayerHit = false;
 var canPlayerStand = false;
 var hasBet = false;
 var canStartNewRound = false;
-var currencyTotal = "2000";
+var currencyTotal = "1000";
 var winnings = "none";
 
 
@@ -24,7 +24,7 @@ const playerBet =  document.querySelector(".player-bet-text");
 const placeBetText = document.getElementById("alert");
 const alertPlayer = document.getElementById("zero-alert");
 
-//*** GAME LOGIC & FUNCTIONALITY ***//
+//*** BET LOGIC & PLAYER CURRENCY FUNCTIONALITY ***//
 function getCurrency(){
     currency.innerText = currencyTotal;
     canStartNewRound = false;
@@ -38,21 +38,27 @@ function checkForZero(){
     }
 }
 
-
-function getBet() {
+function placeBet() {
         if(hasBet == false){
             var bet = document.getElementById("bet").value;
-            playerBet.innerHTML = bet;
-            placeBetText.innerText = "";
-            hasBet = true;
-            canStartNewRound = false;
-            currency.innerText = parseInt(currencyTotal) - bet;
+            let newTotal = parseInt(currencyTotal) - bet;
+            if(newTotal < 0){
+                alertPlayer.innerText = "You can't bet more money than you have.";
+                hasBet = false;
+            } else {
+                playerBet.innerHTML = bet;
+                placeBetText.innerText = "";
+                alertPlayer.innerText = "";
+                hasBet = true;
+                canStartNewRound = false;
+                currency.innerText = parseInt(currencyTotal) - bet;
+            }
         }
     return playerBet.innerHTML
 }
 
 function updateCurrency() {
-    var betNum = parseInt(getBet());
+    var betNum = parseInt(placeBet());
     var currencyTotalNum = parseInt(currencyTotal) - betNum ;
     if(winnings == "1"){
         currency.innerText = (currencyTotalNum + (betNum*2)).toString();
@@ -70,6 +76,7 @@ function updateCurrency() {
 
 
 //*** PLAYER ***//
+
 //create image element associated with first card off top of deck
 function dealPlayerCard(){
     var createImage = document.createElement("img");
@@ -94,6 +101,7 @@ function playerHit(){
 
 
 //*** DEALER ***//
+
 //create image element for dealer associated with first card off top of deck (one of the two cards called in dealCards will be dealt face down)
 function dealDealerCard(cardIsFaceUp = true){
     var createImage = document.createElement("img");
@@ -152,8 +160,6 @@ function updateTotal(array){
 }
 
 //*** COMPARATIVE LOGIC & VALUE CHECKING ***//
-
-//check total weighted value of cards in hand and display win/loss on screen
 function checkPlayerTotal(){
     if (updateTotal(playerArray) > 21)
     {
@@ -287,7 +293,6 @@ function clearTable(){
 }
 
 //*** HANDLERS ***//
-
 document.querySelector('.deal').addEventListener("click", dealCards);
 document.querySelector('.hit').addEventListener("click", playerHit);
 document.querySelector('.stand').addEventListener("click", stand);
@@ -295,7 +300,7 @@ document.querySelector('.newround').addEventListener("click", function(){
     document.querySelector('.deal').addEventListener("click", dealCards);
     clearTable();
 })
-document.querySelector('#bet-submit').addEventListener("click", getBet);
+document.querySelector('#bet-submit').addEventListener("click", placeBet);
 
 
 //*** ON LOAD ***//
