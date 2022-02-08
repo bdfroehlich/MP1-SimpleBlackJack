@@ -131,7 +131,7 @@ input[type='number']{
 }
 
 /* From Stackoverflow: https://stackoverflow.com/questions/43720936/how-to-create-blinking-text-with-css-only */
-#alert {
+#alert, #zero-alert {
 
     animation: opacity 2s ease-in-out infinite;
     opacity: 1;
@@ -143,7 +143,7 @@ input[type='number']{
   }
 
   50% {
-    opacity: 0
+    opacity: 0.2
   }
 
   100% {
