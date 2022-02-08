@@ -1,6 +1,7 @@
 //*** VARIABLES ***///
 var deck = new Deck();
 deck.shuffleDeck();
+// let cardSound = new Audio("assets/Audio/240777__f4ngy__dealing-card.wav");
 
 var isDealClicked = false;
 var canPlayerHit = false;
@@ -79,6 +80,7 @@ function updateCurrency() {
 
 //create image element associated with first card off top of deck
 function dealPlayerCard(){
+    // cardSound.play();
     var createImage = document.createElement("img");
     createImage.src = getPlayerCard(drawTopCard());
     createImage.alt = "A picture of a playing card."
@@ -104,6 +106,7 @@ function playerHit(){
 
 //create image element for dealer associated with first card off top of deck (one of the two cards called in dealCards will be dealt face down)
 function dealDealerCard(cardIsFaceUp = true){
+    // cardSound.play();
     var createImage = document.createElement("img");
     var card = drawTopCard();
     card.cardIsFaceUp = cardIsFaceUp;
@@ -246,6 +249,7 @@ var dealCards = function(){
     if(isDealClicked == false) { 
         this.removeEventListener("click", dealCards);
     }
+    
     if (hasBet == true){
         setTimeout(function() {
             dealPlayerCard();
@@ -265,7 +269,7 @@ var dealCards = function(){
 
         setTimeout(function() {
             updatePlayerTotal();
-            checkPlayerTotal();
+            // checkPlayerTotal();
     
             if(updateTotal(playerArray) == 21) {
                 showDealerCard();
@@ -316,5 +320,8 @@ document.querySelector('#bet-submit').addEventListener("click", placeBet);
 
 
 //*** ON LOAD ***//
-getCurrency();
+
+window.onload = function() {
+    getCurrency();
+}
 
