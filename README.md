@@ -11,8 +11,9 @@ One of the main challenges faced when building the project was implementing all 
 - Refactor code and clean up repetitive code.
 - Make better use of classes and class methods.
 - Implement other play features and bets including Insurance, Surrender, Double Down, Even Money, Split and logic for Aces to be equal to 1 or 11 if the player or dealers hand is greater than 21 but they have an Ace.
+- Add media queries for different media types/devices and clean up styling.
+- Set timeouts for dealing cards to they do not instantly appear on the screen.
 - Sound files for theme music and a sound effect to be played when cards are dealt.
-- Add media queries for different media types/devices.
 
 
 ## Technologies
