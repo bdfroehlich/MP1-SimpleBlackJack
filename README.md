@@ -5,7 +5,7 @@
 Simple Blackjack was created as an elementary version of the original Blackjack poker game. Simple Blackjack will played between the dealer and one player.
 
 
-Basic Blackjack Rules: _Ammended for Simple Blackjack_
+Basic Blackjack Rules: **Ammended for Simple Blackjack**
 (src = https://www.ildado.com/blackjack_rules.html)
 
 To win you need to beat the dealer without busting. You bust when your cards total to more than 21 and you lose automatically. The winner is whoever has closest to a total of 21. You reach 21 by adding up the values of the cards.
