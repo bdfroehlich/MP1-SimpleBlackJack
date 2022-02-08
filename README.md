@@ -6,7 +6,7 @@ Simple Blackjack was created as an elementary version of the original Blackjack 
 ### Challenges
 One of the main challenges faced when building the project was implementing all of the logic required for hand comparisons because the total weighted values of the dealer and player hands needed to be checked after each card draw and not just at the end of the round.
 
-### Future Features
+### Future Features & Updates
 - Refactor code and clean up repetitive code.
 - Make better use of classes and class methods.
 - Implement other play features and bets including Insurance, Surrender, Double Down, Even Money, Split and logic for Aces to be equal to 1 or 11 if the player or dealers hand is greater than 21 but they have an Ace.
