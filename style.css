@@ -1,5 +1,5 @@
 div {
-    border: 1px solid rgb(0, 0, 0);
+    /* border: 1px solid rgb(0, 0, 0); */
     margin: auto;
 }
 
@@ -127,5 +127,5 @@ input[type='number']{
 #zero-alert {
     position: absolute;
     color: wheat;
-    top: 30%;
+    top: 12%;
 }
