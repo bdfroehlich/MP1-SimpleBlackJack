@@ -3,6 +3,7 @@ let cardValue = ['2','3','4','5','6','7','8','9','10','jack','queen','king','ace
 
 let cardSuit = ['clubs','diamonds','hearts','spades'];
 
+//dictionary used to add weighted values to the face cards and ace
 const CARDWEIGHT = {
     "2": 2,
     "3": 3,
@@ -40,6 +41,7 @@ class Deck {
 
 }
 
+//creating the deck of cards using flatMap, using just map gave back and array with a length of 4 each with 13 cards
 function createDeck() {
     return cardValue.flatMap(value => {
         return cardSuit.map(suit =>{
@@ -48,6 +50,8 @@ function createDeck() {
     })
 }
 
+
+//shuffles the created deck - grabs a random index, and swaps it with the current index over the length of the array
 function shuffleArray(array) {
     for (var i = array.length - 1; i > 0; i--) {
 
@@ -62,11 +66,13 @@ function shuffleArray(array) {
     return array;
 }
 
+//grabs the next card for the players hand
 function getPlayerCard(card){
     playerArray.push(card)
     return `assets/${card.value}_of_${card.suit}.png`
 }
 
+//grabs the next card for the dealers hand.. if cardIsFaceUp is passed as false that card is dealt face down
 function getDealerCard(card){
     dealerArray.push(card)
     if (card.cardIsFaceUp) {
@@ -75,6 +81,7 @@ function getDealerCard(card){
     return `assets/backcard.png`
 }
 
+//draws the first card from the shuffled deck
 function drawTopCard(){
     return deck.cards.shift();
 }
