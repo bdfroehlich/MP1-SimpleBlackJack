@@ -1,5 +1,5 @@
-# SIMPLE BLACK JACK
-
+# Simple Black Jack
+___
 Basic Blackjack Rules:
 (src = http://www.hitorstand.net/strategy.php)
 
