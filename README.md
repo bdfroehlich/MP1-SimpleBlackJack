@@ -1,8 +1,7 @@
 # Simple Blackjack
 
 ## Project Description and Introduction
----
-Simple Blackjack was created as an elementary version of the original Blackjack poker game. Simple Blackjack will played between the dealer and one player.
+Simple Blackjack was created as an elementary version of the original Blackjack poker game. Simple Blackjack is played between the dealer and one player.
 
 ### Challenges
 One of the main challenges faced when building the project was implementing all of the logic required for hand comparisons because the total weighted values of the dealer and player hands needed to be checked after each card draw and not just at the end of the round.
@@ -17,7 +16,6 @@ One of the main challenges faced when building the project was implementing all 
 
 
 ## Technologies
----
 - Bootstrap v5.1
 - HTML
 - CSS
@@ -25,16 +23,12 @@ One of the main challenges faced when building the project was implementing all 
 
 
 ## Setup
----
-To run this project in your browser, launch it via the published link in the repository.
+To run this project in your browser launch it via the published link in the repository.
 
 
 ## How to Use
----
 Upon launching the game the player will be prompted to place a bet. Once a bet is placed and submitted the player may hit the deal button to start the hand. Once the first two cards are dealt to the player and the dealer, the player can choose to hit (take another card) or stand (keep their current cards and allow the dealer to draw if they can). Once the dealer has drawn their cards the outcome of the hand will be displayed to the screen and the players bet amount will be added or taken away from their total currency depending on if they win or lose. After the outcome text has been displayed the player can start a new round.
 
 Blackjack rules **Ammended for Simple Blackjack** [here.](https://www.ildado.com/blackjack_rules.html "This link will take you the rules of Blackjack")
-
-There are other betting options namely Insurance, Surrender, Double Down, Even Money and Split, but for for Simple Black Jack only the initial bet will be taken into account. The definitions of the other forms of betting can be found at the above linked source.
 
 
