@@ -9,6 +9,7 @@ var hasBet = false;
 var canStartNewRound = false;
 var currencyTotal = "2000";
 var winnings = "none";
+var newCurrencyTotal
 
 
 let playerArray = [];
@@ -41,7 +42,7 @@ function getBet() {
 
 function updateCurrency() {
     var betNum = parseInt(getBet());
-    var newCurrencyTotal = currencyNum - getBet();
+    newCurrencyTotal = parseInt(currencyTotal);
     if(winnings = "1"){
         currency.innerText = (newCurrencyTotal + (betNum*2)).toString();
     } else if (winnings = "1.5"){
@@ -51,6 +52,7 @@ function updateCurrency() {
     } else if (winning = "tie") {
         currency.innerText = (newCurrencyTotal + betNum).toString();
     }
+    canStartNewRound = true;
 }
 
 
@@ -253,10 +255,8 @@ function clearTable(){
         playerBet.innerHTML = "";
         refreshDeck();
         document.getElementById("betform").reset();
-
         playerArray = [];
         dealerArray = [];
-
         canPlayerStand = false;
         canPlayerHit = false;
         hasBet = false;
