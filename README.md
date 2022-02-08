@@ -4,12 +4,15 @@
 Simple Blackjack was created as an elementary version of the original Blackjack poker game. Simple Blackjack is played between the dealer and one player.
 
 ### Challenges
-One of the main challenges faced when building the project was implementing all of the logic required for hand comparisons because the total weighted values of the dealer and player hands needed to be checked after each card draw and not just at the end of the round.
+- The amount of comparative logic that went into checking the dealer and player hands when the turns ended.
+- Adding weighted values for face cards until discovering the use of dictionaries and passing it into the Card class constructor.
+- Correcting the log for placeBet and updateCurrency - after a new round was started and the player placed a new bet total currency reverted back to its original value.
+
 
 ### Future Features & Updates
-- Refactor code and clean up repetitive code.
-- Make better use of classes and class methods.
-- Implement other play features and bets including Insurance, Surrender, Double Down, Even Money, Split and logic for Aces to be equal to 1 or 11 if the player or dealers hand is greater than 21 but they have an Ace.
+- Make better use of classes, constructors and class methods.
+- Implement other play features and bets including doubling down and splitting.
+- Add logic for Aces to be equal to 1 or 11 if the player or dealers hand is greater than 21 but they have an Ace.
 - Add media queries for different media types/devices and clean up styling.
 - Set timeouts for dealing cards to they do not instantly appear on the screen.
 - Sound files for theme music and a sound effect to be played when cards are dealt.
