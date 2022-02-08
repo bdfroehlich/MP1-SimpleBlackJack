@@ -43,7 +43,7 @@ function placeBet() {
             var bet = document.getElementById("bet").value;
             let newTotal = parseInt(currencyTotal) - bet;
             if(newTotal < 0){
-                alertPlayer.innerText = "You can't bet more money than you have.";
+                alertPlayer.innerText = "You can't bet more money than you have!";
                 hasBet = false;
             } else {
                 playerBet.innerHTML = bet;
@@ -243,32 +243,44 @@ function refreshDeck(){
 
 //deal intial cards to player and dealer
 var dealCards = function(){
+    if(isDealClicked == false) { 
+        this.removeEventListener("click", dealCards);
+    }
     if (hasBet == true){
-        dealPlayerCard();
-        dealDealerCard(false);
-        dealPlayerCard();
-        dealDealerCard();
+        setTimeout(function() {
+            dealPlayerCard();
+        }, 500);
 
-        if(isDealClicked == false) { 
-            this.removeEventListener("click", dealCards);
-        }
-        updatePlayerTotal();
-        checkPlayerTotal();
+        setTimeout(function() {
+            dealDealerCard(false);
+        }, 1000);
 
-        if(updateTotal(playerArray) == 21) {
-            showDealerCard();
-            outcomeText.innerText = "BLACKJACK! You win 1.5 times your bet. Click start new round.";
-            canPlayerHit = false;
-            canPlayerStand = false;
-            canStartNewRound = true;
-            winnings = "1.5";
-            updateCurrency();
-        }
+        setTimeout(function() {
+            dealPlayerCard();
+        }, 1500);
 
-        canPlayerHit = true;
-        canPlayerStand = true;
-        placeBetText.innerText = "";
+        setTimeout(function() {
+            dealDealerCard();
+        }, 2000);
 
+        setTimeout(function() {
+            updatePlayerTotal();
+            checkPlayerTotal();
+    
+            if(updateTotal(playerArray) == 21) {
+                showDealerCard();
+                outcomeText.innerText = "BLACKJACK! You win 1.5 times your bet. Click start new round.";
+                canPlayerHit = false;
+                canPlayerStand = false;
+                canStartNewRound = true;
+                winnings = "1.5";
+                updateCurrency();
+            }
+    
+            canPlayerHit = true;
+            canPlayerStand = true;
+            placeBetText.innerText = "";
+        }, 2000);
     }
 }
 
