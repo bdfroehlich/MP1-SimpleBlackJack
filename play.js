@@ -53,13 +53,13 @@ function getBet() {
 
 function updateCurrency() {
     var betNum = parseInt(getBet());
-    var currencyTotalNum = parseInt(currencyTotal);
+    var currencyTotalNum = parseInt(currencyTotal) - betNum ;
     if(winnings == "1"){
-        currency.innerText = (currencyTotalNum + betNum).toString();
+        currency.innerText = (currencyTotalNum + (betNum*2)).toString();
     } else if (winnings == "1.5"){
-        currency.innerText = (currencyTotalNum + (betNum*1.5)).toString();
+        currency.innerText = (currencyTotalNum + (betNum*2.5)).toString();
     } else if (winnings == "lose"){
-        currency.innerText = (currencyTotalNum - betNum).toString();
+        currency.innerText = currencyTotalNum;
     } else if (winnings == "tie") {
         currency.innerText = currencyTotal;
     }
@@ -74,6 +74,7 @@ function updateCurrency() {
 function dealPlayerCard(){
     var createImage = document.createElement("img");
     createImage.src = getPlayerCard(drawTopCard());
+    createImage.alt = "A picture of a playing card."
     playerCards.appendChild(createImage);
 }
 
