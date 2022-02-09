@@ -63,16 +63,19 @@ function updateCurrency() {
     var betNum = parseInt(placeBet());
     var currencyTotalNum = parseInt(currencyTotal);
     if(winnings == "1"){
-        currency.innerText = (currencyTotalNum + (betNum*1)).toString();
+        currency.innerText = (currencyTotalNum + (betNum)).toString();
+        currencyTotal = parseInt(currency.innerText);
     } else if (winnings == "1.5"){
         currency.innerText = (currencyTotalNum + (betNum*1.5)).toString();
+        currencyTotal = parseInt(currency.innerText);
     } else if (winnings == "lose"){
         currency.innerText = currencyTotalNum;
+        currencyTotal = parseInt(currency.innerText);
     } else if (winnings == "tie") {
         currency.innerText = currencyTotalNum + betNum;
+        currencyTotal = parseInt(currency.innerText);
     }
     canStartNewRound = true;
-    currencyTotal = parseInt(currency.innerText);
     checkForZero();
 }
 
@@ -143,15 +146,6 @@ function stand(){
     canPlayerHit = false;
     showDealerCard();
     checkDealerTotal();
-    // if(updateTotal(dealerArray) > updateTotal(playerArray) && updateTotal(dealerArray) > 17){
-    //     outcomeText.innerText = "Dealer wins! You lost your bet. Click start new round.";
-    //     canStartNewRound = true;
-    //     canPlayerStand = false;
-    //     winnings = "lose";
-    //     updateCurrency();
-    // } else {
-    //     dealerHit();
-    // }
     }
 }
 
@@ -188,8 +182,7 @@ function checkPlayerTotal(){
         } else if (updateTotal(playerArray) == 21 && updateTotal(dealerArray) < 17 ) {
             dealerHit();
             canPlayerHit = false;
-        } else if (updateTotal(playerArray) == 21 && updateTotal(dealerArray) > 17 ) {
-            dealerHit();
+        } else if (updateTotal(playerArray) == 21 && updateTotal(dealerArray) >= 17 ) {
             outcomeText.innerText = "You have won your bet! Click start new round.";
             canPlayerHit = false;
             canStartNewRound = true;
@@ -309,7 +302,7 @@ function clearTable(){
         canPlayerHit = false;
         hasBet = false;
 
-        placeBetText.innerText = "Submit your bet below & deal!";
+        placeBetText.innerText = "Submit your bet below & hit Deal above!";
     }
 }
 
