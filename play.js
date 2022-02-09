@@ -53,6 +53,7 @@ function placeBet() {
                 hasBet = true;
                 canStartNewRound = false;
                 currency.innerText = parseInt(currencyTotal) - bet;
+                currencyTotal = currency.innerText;
             }
         }
     return playerBet.innerHTML
@@ -141,15 +142,17 @@ function stand(){
     if(canPlayerStand == true){
     canPlayerHit = false;
     showDealerCard();
-    if(updateTotal(dealerArray) > updateTotal(playerArray)){
-        outcomeText.innerText = "Dealer wins! You lost your bet. Click start new round.";
-        canStartNewRound = true;
-        canPlayerStand = false;
-        winnings = "lose";
-        updateCurrency();
-    } else {
-    dealerHit();
-    }}
+    checkDealerTotal();
+    // if(updateTotal(dealerArray) > updateTotal(playerArray) && updateTotal(dealerArray) > 17){
+    //     outcomeText.innerText = "Dealer wins! You lost your bet. Click start new round.";
+    //     canStartNewRound = true;
+    //     canPlayerStand = false;
+    //     winnings = "lose";
+    //     updateCurrency();
+    // } else {
+    //     dealerHit();
+    // }
+    }
 }
 
 //check total weighted value of cards in hand
@@ -198,7 +201,9 @@ function checkPlayerTotal(){
 }
 
 function checkDealerTotal(){
-    if (updateTotal(dealerArray) > 21)
+    if(updateTotal(dealerArray) < 17){
+        dealerHit();
+    }else if (updateTotal(dealerArray) > 21)
     {
         outcomeText.innerText = "You have won your bet! Click start new round.";
         winnings = "1";
@@ -221,7 +226,7 @@ function checkDealerTotal(){
 
 function compareTotals(){
     if(updateTotal(dealerArray) > 21){
-        checkDealerTotal()
+        checkDealerTotal();
     } else if (updateTotal(playerArray) > updateTotal(dealerArray)){
         outcomeText.innerText = "You have won your bet! Click start new round.";
         winnings = "1";
