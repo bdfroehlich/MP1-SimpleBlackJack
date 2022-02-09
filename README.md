@@ -16,6 +16,7 @@ Simple Blackjack was created as an elementary version of the original Blackjack 
 - Add media queries for different media types/devices and clean up styling.
 - Set timeouts for dealing cards to they do not instantly appear on the screen.
 - Sound files for theme music and a sound effect to be played when cards are dealt.
+- Total currency needs to be a decimal - winning 1.5 times an odd number currently returns a whole number. IE blackjack on a bet of $1 currently returns $3 instead of $2.50.
 
 
 ## Technologies
