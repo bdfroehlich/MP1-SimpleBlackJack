@@ -61,15 +61,15 @@ function placeBet() {
 
 function updateCurrency() {
     var betNum = parseInt(placeBet());
-    var currencyTotalNum = parseInt(currencyTotal) - betNum ;
+    var currencyTotalNum = parseInt(currencyTotal);
     if(winnings == "1"){
-        currency.innerText = (currencyTotalNum + (betNum*2)).toString();
+        currency.innerText = (currencyTotalNum + (betNum*1)).toString();
     } else if (winnings == "1.5"){
-        currency.innerText = (currencyTotalNum + (betNum*2.5)).toString();
+        currency.innerText = (currencyTotalNum + (betNum*1.5)).toString();
     } else if (winnings == "lose"){
         currency.innerText = currencyTotalNum;
     } else if (winnings == "tie") {
-        currency.innerText = currencyTotal;
+        currency.innerText = currencyTotalNum + betNum;
     }
     canStartNewRound = true;
     currencyTotal = parseInt(currency.innerText);
