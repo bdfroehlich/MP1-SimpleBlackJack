@@ -6,7 +6,7 @@ Simple Blackjack was created as an elementary version of the original Blackjack 
 ### Challenges
 - The amount of comparative logic that went into checking the dealer and player hands when the turns ended.
 - Adding weighted values for face cards until discovering the use of dictionaries and passing it into the Card class constructor.
-- Correcting the log for placeBet and updateCurrency - after a new round was started and the player placed a new bet total currency reverted back to its original value.
+- Correcting the logic for placeBet and updateCurrency so the players currency would not revert back to the default amount after each round.
 
 
 ### Future Features & Updates
