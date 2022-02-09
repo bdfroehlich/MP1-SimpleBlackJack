@@ -63,14 +63,20 @@ function updateCurrency() {
     var betNum = parseInt(placeBet());
     var currencyTotalNum = parseInt(currencyTotal);
     if(winnings == "1"){
-        currency.innerText = (currencyTotalNum + (betNum))
+        currency.innerText = (currencyTotalNum + (betNum*2))
+        // winnings = "none";
     } else if (winnings == "1.5"){
         currency.innerText = (currencyTotalNum + (betNum*2.5))
+        // winnings = "none";
     } else if (winnings == "lose"){
         currency.innerText = currencyTotalNum;
+        // winnings = "none";
     } else if (winnings == "tie") {
         currency.innerText = currencyTotalNum + betNum;
+        // winnings = "none";
     }
+    betNum = 0;
+    winnings = "none";
     currencyTotal = parseInt(currency.innerText);
     canStartNewRound = true;
     checkForZero();
@@ -298,7 +304,6 @@ function clearTable(){
         canPlayerStand = false;
         canPlayerHit = false;
         hasBet = false;
-        winnings = "none";
         placeBetText.innerText = "Submit your bet below & hit Deal above!";
     }
 }
