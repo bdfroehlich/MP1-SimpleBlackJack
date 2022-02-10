@@ -42,7 +42,7 @@ class Deck {
 
 }
 
-//creating the deck of cards using flatMap, using just map gave back and array with a length of 4 each with 13 cards
+//creating the deck of cards using flatMap, using just map gave back and array with a 4 indices and 13 cards in each
 function createDeck() {
     return cardValue.flatMap(value => {
         return cardSuit.map(suit =>{
