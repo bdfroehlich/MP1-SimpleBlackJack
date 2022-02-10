@@ -162,18 +162,18 @@ function checkPlayerTotal(){
     {
         showDealerCard();
         outcomeText.innerText = "Dealer wins! You lost your bet. Click start new round.";
-        canPlayerHit = false;
-        canStartNewRound = true;
-        canPlayerStand = false;
+        // canPlayerHit = false;
+        // canStartNewRound = true;
+        // canPlayerStand = false;
         winnings = "lose";
         updateCurrency();
     } else if (updateTotal(playerArray) == 21) {
         showDealerCard();
         if(updateTotal(playerArray) == updateTotal(dealerArray)){
             outcomeText.innerText = "It's a tie! You get your bet back. Click start new round.";
-            canPlayerHit = false;
-            canStartNewRound = true;
-            canPlayerStand = false;
+            // canPlayerHit = false;
+            // canStartNewRound = true;
+            // canPlayerStand = false;
             winnings = "tie";
             updateCurrency();
         } else if (updateTotal(playerArray) == 21 && updateTotal(dealerArray) < 17 ) {
@@ -181,12 +181,15 @@ function checkPlayerTotal(){
             canPlayerHit = false;
         } else if (updateTotal(playerArray) == 21 && updateTotal(dealerArray) >= 17 ) {
             outcomeText.innerText = "You have won your bet! Click start new round.";
-            canPlayerHit = false;
-            canStartNewRound = true;
-            canPlayerStand = false;
+            // canPlayerHit = false;
+            // canStartNewRound = true;
+            // canPlayerStand = false;
             winnings = "1";
             updateCurrency();
         }
+        canPlayerHit = false;
+        canStartNewRound = true;
+        canPlayerStand = false;
     }
 }
 
