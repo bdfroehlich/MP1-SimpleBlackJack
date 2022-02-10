@@ -43,6 +43,7 @@ class Deck {
 }
 
 //creating the deck of cards using flatMap, using just map gave back and array with a 4 indices and 13 cards in each
+//flatmap: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap
 function createDeck() {
     return cardValue.flatMap(value => {
         return cardSuit.map(suit =>{
