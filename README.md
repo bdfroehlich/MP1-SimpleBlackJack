@@ -3,6 +3,8 @@
 ## Project Description and Introduction
 Simple Blackjack was created as an elementary version of the original Blackjack poker game. Simple Blackjack is played between the dealer and one player.
 
+To play the game click [here.](https://bdfroehlich.github.io/MP1-SimpleBlackJack/?# "This link will take you to Simple Blackjack.")
+
 ### Challenges
 - The amount of comparative logic that went into checking the dealer and player hands when the turns ended.
 - Adding weighted values for face cards until discovering the use of dictionaries and passing it into the Card class constructor.
