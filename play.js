@@ -103,7 +103,6 @@ function playerHit(){
     }
 }
 
-
 //*** DEALER ***//
 
 //create image element for dealer associated with first card off top of deck (one of the two cards called in dealCards will be dealt face down)
@@ -319,4 +318,3 @@ document.querySelector('#bet-submit').addEventListener("click", placeBet);
 window.onload = function() {
     getCurrency();
 }
-
