@@ -11,7 +11,6 @@ var canStartNewRound = false;
 var currencyTotal = "1000";
 var winnings = "none";
 
-
 let playerArray = [];
 let dealerArray = [];
 
@@ -64,16 +63,12 @@ function updateCurrency() {
     var currencyTotalNum = parseInt(currencyTotal);
     if(winnings == "1"){
         currency.innerText = (currencyTotalNum + (betNum*2))
-        // winnings = "none";
     } else if (winnings == "1.5"){
         currency.innerText = (currencyTotalNum + (betNum*2.5))
-        // winnings = "none";
     } else if (winnings == "lose"){
         currency.innerText = currencyTotalNum;
-        // winnings = "none";
     } else if (winnings == "tie") {
         currency.innerText = currencyTotalNum + betNum;
-        // winnings = "none";
     }
     betNum = 0;
     winnings = "none";
