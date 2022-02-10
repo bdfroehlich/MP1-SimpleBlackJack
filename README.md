@@ -14,25 +14,27 @@ To play the game click [here.](https://bdfroehlich.github.io/MP1-SimpleBlackJack
 ### Future Features & Updates
 - Make better use of classes, constructors and class methods.
 - Implement other play features and bets including doubling down and splitting.
-- Add logic for Aces to be equal to 1 or 11 if the player or dealers hand is greater than 21 but they have an Ace.
+- Add logic for Aces to be equal to 1 or 11.
 - Add media queries for different media types/devices and clean up styling.
-- Set timeouts for dealing cards to they do not instantly appear on the screen.
 - Sound files for theme music and a sound effect to be played when cards are dealt.
-- Total currency needs to be a decimal - winning 1.5 times an odd number currently returns a whole number. IE blackjack on a bet of $1 currently returns $3 instead of $2.50.
+- Total currency needs to be a decimal.
+
+### Current Bugs To Be Fixed
+- On initialization of the page the player bet is not accepted on the first submit. It must be submitted a second time. Betting will continue to work as intended after.
 
 
-## Technologies
+### Technologies
 - Bootstrap v5.1
 - HTML
 - CSS
 - Javascript
 
 
-## Setup
+### Setup
 To run this project in your browser launch it via the published link in the repository.
 
 
-## How to Use
+### How to Use
 Upon launching the game the player will be prompted to place a bet. Once a bet is placed and submitted the player may hit the deal button to start the hand. Once the first two cards are dealt to the player and the dealer, the player can choose to hit (take another card) or stand (keep their current cards and allow the dealer to draw if they can). Once the dealer has drawn their cards the outcome of the hand will be displayed to the screen and the players bet amount will be added or taken away from their total currency depending on if they win or lose. After the outcome text has been displayed the player can start a new round.
 
 Blackjack rules **Ammended for Simple Blackjack** [here.](https://www.ildado.com/blackjack_rules.html "This link will take you the rules of Blackjack.")
