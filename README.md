@@ -11,7 +11,7 @@ Upon launching the game the player will be prompted to place a bet. Once a bet i
 Blackjack rules **Ammended for Simple Blackjack** [here.](https://www.ildado.com/blackjack_rules.html "This link will take you the rules of Blackjack.")
 
 ### Setup
-To run this project in your browser launch it via the published link in the repository.
+To run this project in your browser launch it via the published link in the repository or from the link above.
 
 ### Technologies
 - Bootstrap v5.1
