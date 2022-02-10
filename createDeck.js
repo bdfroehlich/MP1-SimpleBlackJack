@@ -4,6 +4,7 @@ let cardValue = ['2','3','4','5','6','7','8','9','10','jack','queen','king','ace
 let cardSuit = ['clubs','diamonds','hearts','spades'];
 
 //dictionary used to add weighted values to the face cards and ace
+//source: https://pietschsoft.com/post/2015/09/05/javascript-basics-how-to-create-a-dictionary-with-keyvalue-pairs
 const CARDWEIGHT = {
     "2": 2,
     "3": 3,
