@@ -25,7 +25,7 @@ To run this project in your browser launch it via the published link in the repo
 - Correcting the logic for placeBet and updateCurrency so the players currency would not revert back to the default amount after each round.
 
 ### Future Features & Updates
-- Make better use of classes, constructors and class methods.
+- Make better use of class constructors and class methods.
 - Implement other play features and bets including doubling down and splitting.
 - Add logic for Aces to be equal to 1 or 11.
 - Add media queries for different media types/devices and clean up styling.
