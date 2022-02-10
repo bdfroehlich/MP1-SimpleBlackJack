@@ -31,6 +31,7 @@ To run this project in your browser launch it via the published link in the repo
 - Add media queries for different media types/devices and clean up styling.
 - Sound files for theme music and a sound effect to be played when cards are dealt.
 - Total currency needs to be a decimal.
+- Add some CSS effects to make the cards being dealt appear to come off the center deck.
 
 ### Current Bugs To Be Fixed
 - On initialization of the page the player bet is not accepted on the first submit. It must be submitted a second time. Betting will continue to work as intended after.
