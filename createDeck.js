@@ -52,6 +52,7 @@ function createDeck() {
 
 
 //shuffles the created deck - grabs a random index, and swaps it with the current index over the length of the array
+// source: https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm
 function shuffleArray(array) {
     for (var i = array.length - 1; i > 0; i--) {
 
