@@ -1,12 +1,12 @@
 @import "config";
 
+
 %alert {
     position: absolute;
     top: 10%;
     animation: opacity 2s ease-in-out infinite;
     opacity: 1;
     font-weight: bold;
-    font-size: $alert-font-size;
 }
 
 

@@ -13,14 +13,20 @@ body {
     }
 }
 
+
+$font-size: (26px, 20px, 20px, 20px );
+
+@for $i from 1 through 4 {
+
+  h#{$i} {
+    font-size: nth($font-size, $i);
+  }
+}
+
 .card-container {
     @include flex-row-wrap();
     width: 100vh;
     height: 90vh;
-}
-
-.deck-card {
-    @include flex-row-wrap();
 }
 
 .dealer-cards, .player-cards {
@@ -37,12 +43,6 @@ body {
     margin-top: 0em;
 }
 
-
-.deal, .hit, .stand, .newround {
-    padding-left: 3em;
-    padding-right: 3em;
-}
-
 .outcome, .player-details {
     position: relative;
     width: 23%;
@@ -50,43 +50,44 @@ body {
     @include flex-justify-items();
 }
 
- .player-details {
+
+.player-details {
     @include flex-row-wrap();
     color: $primary-text-color;
-} 
 
-.player-total, .player-currency, .player-bet {
-    width: 8em;
-    height: 2em;
-    @include flex-justify();
-    @include set-font-color(lighten($player-text-color, 80%));
+    .player-total, .player-currency, .player-bet {
+        width: 8em;
+        height: 2em;
+        @include flex-justify();
+        @include set-font-color(lighten($player-text-color, 80%));
+    }
+
 }
-
 
 .hand-outcome {
     width: 90%;
 }
-
 
 .bet-div {
     min-width: 30%;
     @include flex-justify();
     margin-bottom: 0em;
     @include set-font-color(lighten($player-text-color, 80%));
-}
-
-#form, #betform {
-    width: 65%;
-    @include flex-row-wrap();
-    justify-content: space-evenly;
     
-    input {
-        width: 80px;
-
-        &:focus{
-            background-color: $bet-focus-color; 
+    #form, #betform {
+        width: 65%;
+        @include flex-row-wrap();
+        justify-content: space-evenly;
+        
+        input {
+            width: 80px;
+    
+            &:focus{
+                background-color: $bet-focus-color; 
+            }
         }
     }
+
 }
 
 .outcome-text {
@@ -96,7 +97,17 @@ body {
     text-align: center;
 }
 
-.dealer-text, .player-text {
+.player-text {
     width: fit-content;
     @include set-font-color($primary-text-color);
+}
+
+.dealer-text {
+    width: fit-content;
+    @include set-font-color($primary-text-color);
+}
+
+
+#back-card {
+    border-radius: 5%;
 }

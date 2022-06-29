@@ -3,6 +3,8 @@
   border-radius: 5px;
   padding: 5px 10px;
   margin: 3px;
+  padding-left: 3em;
+  padding-right: 3em;
 }
 .btn-new:hover, .btn-stand:hover, .btn-hit:hover, .btn-deal:hover {
   transform: scale(0.8);
@@ -47,7 +49,6 @@
           animation: opacity 2s ease-in-out infinite;
   opacity: 1;
   font-weight: bold;
-  font-size: 20px;
 }
 
 /* From Stackoverflow: https://stackoverflow.com/questions/43720936/how-to-create-blinking-text-with-css-only */
@@ -93,6 +94,22 @@ body div {
   margin: auto;
 }
 
+h1 {
+  font-size: 26px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+h4 {
+  font-size: 20px;
+}
+
 .card-container {
   display: flex;
   flex-direction: row;
@@ -100,13 +117,6 @@ body div {
   justify-content: center;
   width: 100vh;
   height: 90vh;
-}
-
-.deck-card {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
 }
 
 .dealer-cards, .player-cards {
@@ -126,11 +136,6 @@ body div {
   margin-top: 0em;
 }
 
-.deal, .hit, .stand, .newround {
-  padding-left: 3em;
-  padding-right: 3em;
-}
-
 .outcome, .player-details {
   position: relative;
   width: 23%;
@@ -147,8 +152,7 @@ body div {
   justify-content: center;
   color: #E0CBA8;
 }
-
-.player-total, .player-currency, .player-bet {
+.player-details .player-total, .player-details .player-currency, .player-details .player-bet {
   width: 8em;
   height: 2em;
   display: flex;
@@ -167,8 +171,7 @@ body div {
   margin-bottom: 0em;
   color: #ddebf5;
 }
-
-#form, #betform {
+.bet-div #form, .bet-div #betform {
   width: 65%;
   display: flex;
   flex-direction: row;
@@ -176,10 +179,10 @@ body div {
   justify-content: center;
   justify-content: space-evenly;
 }
-#form input, #betform input {
+.bet-div #form input, .bet-div #betform input {
   width: 80px;
 }
-#form input:focus, #betform input:focus {
+.bet-div #form input:focus, .bet-div #betform input:focus {
   background-color: #f8fa76;
 }
 
@@ -190,9 +193,20 @@ body div {
   text-align: center;
 }
 
-.dealer-text, .player-text {
+.player-text {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   color: #E0CBA8;
+}
+
+.dealer-text {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  color: #E0CBA8;
+}
+
+#back-card {
+  border-radius: 5%;
 }/*# sourceMappingURL=style.css.map */
