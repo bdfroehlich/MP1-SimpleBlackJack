@@ -11,6 +11,9 @@
   &:hover {
     transform: scale(.80);
   }
+  &:focus {
+    background-color: $button-focus-color;
+  }
 }
 
 

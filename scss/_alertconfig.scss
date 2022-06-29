@@ -2,13 +2,6 @@
 
 %alert {
     position: absolute;
-    color: $primary-text-color;
-}
-
-
-/* From Stackoverflow: https://stackoverflow.com/questions/43720936/how-to-create-blinking-text-with-css-only */
-#submit-alert, #zero-alert {
-    @extend %alert;
     top: 10%;
     animation: opacity 2s ease-in-out infinite;
     opacity: 1;
@@ -16,8 +9,16 @@
     font-size: $alert-font-size;
 }
 
+
+/* From Stackoverflow: https://stackoverflow.com/questions/43720936/how-to-create-blinking-text-with-css-only */
 #submit-alert {
-    @include set-font-color($alert-text-color);
+  @extend %alert;
+  color: #201E50
+}
+
+#zero-alert {
+  @extend %alert;
+  color: #DD7373
 }
 
 

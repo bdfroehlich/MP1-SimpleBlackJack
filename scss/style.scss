@@ -91,18 +91,16 @@ body {
 
 
 .bet-div {
-    min-width: 40%;
+    min-width: 30%;
     max-height: fit-content;
     display: flex;
-    grid-template-columns: max-content max-content;
-    grid-gap:5px;
     justify-content: center;
     margin-bottom: 0em;
-    color: $primary-text-color;
+    @include set-font-color(lighten($player-text-color, 80%));
 }
 
 #form, #betform {
-    width: 85%;
+    width: 65%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
