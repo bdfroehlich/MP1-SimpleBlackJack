@@ -30,10 +30,7 @@ $font-size: (26px, 20px, 20px, 20px );
 }
 
 .dealer-cards, .player-cards {
-    position: relative;
-    width: 90%;
-    height: 30%;
-    @include flex-justify-items();
+    @include dealer-player-cards();
 }
 
 .dealer-cards{
@@ -43,23 +40,22 @@ $font-size: (26px, 20px, 20px, 20px );
     margin-top: 0em;
 }
 
-.outcome, .player-details {
+.outcome {
     position: relative;
     width: 23%;
     height: 20%;
     @include flex-justify-items();
 }
 
-
 .player-details {
+    position: relative;
+    width: 23%;
+    height: 20%;
     @include flex-row-wrap();
     color: $primary-text-color;
 
     .player-total, .player-currency, .player-bet {
-        width: 8em;
-        height: 2em;
-        @include flex-justify();
-        @include set-font-color(lighten($player-text-color, 80%));
+        @include player-values()
     }
 
 }
@@ -97,16 +93,10 @@ $font-size: (26px, 20px, 20px, 20px );
     text-align: center;
 }
 
-.player-text {
+.player-text, .dealer-text {
     width: fit-content;
     @include set-font-color($primary-text-color);
 }
-
-.dealer-text {
-    width: fit-content;
-    @include set-font-color($primary-text-color);
-}
-
 
 #back-card {
     border-radius: 5%;
