@@ -16,3 +16,21 @@
   @mixin set-font-color($color) {
     color: $color;
   }
+
+  @mixin flex-row-wrap() {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  @mixin flex-justify() {
+    display: flex;
+    justify-content: center;
+  }
+
+  @mixin flex-justify-items() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

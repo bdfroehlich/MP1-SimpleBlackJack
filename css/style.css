@@ -8,7 +8,7 @@
   transform: scale(0.8);
 }
 .btn-new:focus, .btn-stand:focus, .btn-hit:focus, .btn-deal:focus {
-  background-color: #0D1F2D;
+  background-color: #37424b;
 }
 
 .btn-deal {
@@ -85,9 +85,9 @@
 body {
   background-color: #35654d;
   display: flex;
-  justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
 }
 body div {
   margin: auto;
@@ -104,8 +104,9 @@ body div {
 
 .deck-card {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
 }
 
 .dealer-cards, .player-cards {
@@ -113,8 +114,8 @@ body div {
   width: 90%;
   height: 30%;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
 .dealer-cards {
@@ -123,14 +124,6 @@ body div {
 
 .player-cards {
   margin-top: 0em;
-}
-
-body {
-  background-color: #35654d;
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
 }
 
 .deal, .hit, .stand, .newround {
@@ -143,22 +136,23 @@ body {
   width: 23%;
   height: 20%;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
 .player-details {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
   color: #E0CBA8;
 }
 
 .player-total, .player-currency, .player-bet {
-  display: flex;
-  width: 80%;
+  width: 70%;
   height: 20%;
-  justify-content: end;
+  display: flex;
+  justify-content: center;
   color: #ddebf5;
 }
 
@@ -168,9 +162,6 @@ body {
 
 .bet-div {
   min-width: 30%;
-  max-height: -webkit-fit-content;
-  max-height: -moz-fit-content;
-  max-height: fit-content;
   display: flex;
   justify-content: center;
   margin-bottom: 0em;
@@ -182,7 +173,14 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
   justify-content: space-evenly;
+}
+#form input, #betform input {
+  width: 80px;
+}
+#form input:focus, #betform input:focus {
+  background-color: #f8fa76;
 }
 
 .outcome-text {
