@@ -48,6 +48,12 @@
   -webkit-animation: opacity 2s ease-in-out infinite;
           animation: opacity 2s ease-in-out infinite;
   opacity: 1;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#submit-alert {
+  color: #201E50;
 }
 
 @-webkit-keyframes opacity {
@@ -150,6 +156,7 @@ body {
   width: 80%;
   height: 20%;
   justify-content: end;
+  color: #ddebf5;
 }
 
 .hand-outcome {
@@ -179,8 +186,9 @@ body {
 }
 
 .outcome-text {
+  font-size: 20px;
   font-weight: bold;
-  color: #E0CBA8;
+  color: #DD7373;
   text-align: center;
 }
 

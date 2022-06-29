@@ -81,6 +81,7 @@ body {
     width: 80%;
     height: 20%;
     justify-content: end;
+    @include set-font-color(lighten($player-text-color, 80%));
 }
 
 
@@ -109,12 +110,13 @@ body {
 }
 
 .outcome-text {
+    font-size: $alert-font-size;
     font-weight: bold;
-    color: $primary-text-color;
+    @include set-font-color($outcome-text-color);
     text-align: center;
 }
 
 .dealer-text, .player-text {
     width: fit-content;
-    color: $primary-text-color;
+    @include set-font-color($primary-text-color);
 }
