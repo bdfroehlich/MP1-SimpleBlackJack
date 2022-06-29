@@ -1,16 +1,11 @@
 @import "btnConfig";
 @import "utilities";
 @import "config";
+@import "alertconfig";
 
-// * {
-//     box-sizing: border-box;
-//     margin: 0;
-//     padding: 0;
-// }
 
 body {
     background-color: $primary-color;
-    font-family: $font-stack;
     display: flex;
     justify-content: center;
     flex-direction: row;
@@ -19,15 +14,6 @@ body {
     div {
         margin: auto;
     }
-}
-
-.btn-div {
-    min-width: 100%;
-    max-height: 5vh;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1em;
-    margin-top: 1em;
 }
 
 .card-container {
@@ -62,7 +48,7 @@ body {
 }
 
 body {
-    background-color: #35654d ;
+    background-color: $primary-color ;
     display: flex;
     justify-content: center;
     flex-direction: row;
@@ -87,7 +73,7 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    color: wheat;
+    color: $primary-text-color;
 } 
 
 .player-total, .player-currency, .player-bet {
@@ -111,7 +97,7 @@ body {
     grid-gap:5px;
     justify-content: center;
     margin-bottom: 0em;
-    color: wheat;
+    color: $primary-text-color;
 }
 
 #form, #betform {
@@ -124,47 +110,11 @@ body {
 
 .outcome-text {
     font-weight: bold;
-    color: wheat;
+    color: $primary-text-color;
     text-align: center;
 }
 
 .dealer-text, .player-text {
     width: fit-content;
-    color: wheat;
-}
-
-input[type='number']{
-    width: 80px;
-}
-
-#alert {
-    position: absolute;
-    color: wheat;
-}
-
-#zero-alert {
-    position: absolute;
-    color: wheat;
-    top: 12%;
-}
-
-/* From Stackoverflow: https://stackoverflow.com/questions/43720936/how-to-create-blinking-text-with-css-only */
-#alert, #zero-alert {
-
-    animation: opacity 2s ease-in-out infinite;
-    opacity: 1;
-}
-
-@keyframes opacity {
-  0% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0.2
-  }
-
-  100% {
-    opacity: 1;
-  }
+    color: $primary-text-color;
 }

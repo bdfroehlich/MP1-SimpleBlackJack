@@ -1,0 +1,30 @@
+@import "config";
+
+%alert {
+    position: absolute;
+    color: $primary-text-color;
+}
+
+
+/* From Stackoverflow: https://stackoverflow.com/questions/43720936/how-to-create-blinking-text-with-css-only */
+#submit-alert, #zero-alert {
+    @extend %alert;
+    top: 10%;
+    animation: opacity 2s ease-in-out infinite;
+    opacity: 1;
+}
+
+
+@keyframes opacity {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.2
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

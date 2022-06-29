@@ -21,7 +21,7 @@ const playerTotal = document.querySelector(".player-total-text");
 const outcomeText = document.querySelector(".outcome-text");
 const currency = document.querySelector(".player-currency-text");
 const playerBet =  document.querySelector(".player-bet-text");
-const placeBetText = document.getElementById("alert");
+const placeBetText = document.getElementById("submit-alert");
 const alertPlayer = document.getElementById("zero-alert");
 
 //*** BET LOGIC & PLAYER CURRENCY FUNCTIONALITY ***//
