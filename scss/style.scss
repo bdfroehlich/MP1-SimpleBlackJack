@@ -56,8 +56,8 @@ body {
 } 
 
 .player-total, .player-currency, .player-bet {
-    width: 70%;
-    height: 20%;
+    width: 8em;
+    height: 2em;
     @include flex-justify();
     @include set-font-color(lighten($player-text-color, 80%));
 }
