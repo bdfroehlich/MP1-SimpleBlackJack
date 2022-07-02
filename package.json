@@ -1,0 +1,23 @@
+{
+  "name": "mp1-simpleblackjack",
+  "version": "1.0.0",
+  "description": "Simple Blackjack was created as an elementary version of the original Blackjack poker game. Simple Blackjack is played between the dealer and one player.",
+  "main": "createDeck.js",
+  "dependencies": {
+    "typescript": "^4.7.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bdfroehlich/MP1-SimpleBlackJack.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bdfroehlich/MP1-SimpleBlackJack/issues"
+  },
+  "homepage": "https://github.com/bdfroehlich/MP1-SimpleBlackJack#readme"
+}
