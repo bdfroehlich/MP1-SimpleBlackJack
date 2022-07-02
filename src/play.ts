@@ -11,18 +11,18 @@ var canStartNewRound = false;
 var currencyTotal = "1000";
 var winnings = "none";
 
-let playerArray = [];
-let dealerArray = [];
+let playerArray: (number | string | boolean )[] = [];
+let dealerArray: (number | string | boolean )[] = [];
 
 //*** HTML SELECTOR CONSTANTS ***///
-const dealerCards = document.querySelector(".dealer-cards");
-const playerCards = document.querySelector(".player-cards");
-const playerTotal = document.querySelector(".player-total-text");
-const outcomeText = document.querySelector(".outcome-text");
-const currency = document.querySelector(".player-currency-text");
-const playerBet =  document.querySelector(".player-bet-text");
-const placeBetText = document.getElementById("submit-alert");
-const alertPlayer = document.getElementById("zero-alert");
+const dealerCards = document.querySelector(".dealer-cards") as HTMLElement;
+const playerCards = document.querySelector(".player-cards") as HTMLElement;
+const playerTotal = document.querySelector(".player-total-text") as HTMLElement;
+const outcomeText = document.querySelector(".outcome-text") as HTMLElement;
+const currency = document.querySelector(".player-currency-text") as HTMLElement;
+const playerBet =  document.querySelector(".player-bet-text") as HTMLElement;
+const placeBetText = document.getElementById("submit-alert") as HTMLElement;
+const alertPlayer = document.getElementById("zero-alert") as HTMLElement;
 
 //*** BET LOGIC & PLAYER CURRENCY FUNCTIONALITY ***//
 function getCurrency(){
@@ -40,18 +40,19 @@ function checkForZero(){
 
 function placeBet() {
         if(hasBet == false){
-            var bet = document.getElementById("bet").value;
+            var betEle = document.getElementById("bet") as HTMLInputElement;
+            var bet = parseInt(betEle.value)
             let newTotal = parseInt(currencyTotal) - bet;
             if(newTotal < 0){
                 alertPlayer.innerText = "You can't bet more money than you have!";
                 hasBet = false;
             } else {
-                playerBet.innerHTML = bet;
+                playerBet.innerHTML = bet.toString();
                 placeBetText.innerText = "";
                 alertPlayer.innerText = "";
                 hasBet = true;
                 canStartNewRound = false;
-                currency.innerText = parseInt(currencyTotal) - bet;
+                currency.innerText = (parseInt(currencyTotal) - bet).toString();
                 currencyTotal = currency.innerText;
             }
         }
@@ -62,17 +63,17 @@ function updateCurrency() {
     var betNum = parseInt(placeBet());
     var currencyTotalNum = parseInt(currencyTotal);
     if(winnings == "1"){
-        currency.innerText = (currencyTotalNum + (betNum*2))
+        currency.innerText = (currencyTotalNum + (betNum*2)).toString()
     } else if (winnings == "1.5"){
-        currency.innerText = (currencyTotalNum + (betNum*2.5))
+        currency.innerText = (currencyTotalNum + (betNum*2.5)).toString()
     } else if (winnings == "lose"){
-        currency.innerText = currencyTotalNum;
+        currency.innerText = currencyTotalNum.toString();
     } else if (winnings == "tie") {
-        currency.innerText = currencyTotalNum + betNum;
+        currency.innerText = (currencyTotalNum + betNum).toString();
     }
     betNum = 0;
     winnings = "none";
-    currencyTotal = parseInt(currency.innerText);
+    currencyTotal = currency.innerText;
     canStartNewRound = true;
     checkForZero();
 }
@@ -147,7 +148,7 @@ function stand(){
 }
 
 //check total weighted value of cards in hand
-function updateTotal(array){
+function updateTotal(array: (any)[]){
     let sum = 0;
     for(let i=0; i < array.length; i++){
         // console.log(array[i])

@@ -22,6 +22,11 @@ const CARDWEIGHT = {
 }
 
 class Card {
+    value: number;
+    suit: string;
+    weight: number;
+    cardIsFaceUp: boolean;
+    
     constructor(value, suit) {
         this.value = value;
         this.suit = suit;
