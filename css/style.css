@@ -1,0 +1,208 @@
+.btn-new, .btn-stand, .btn-hit, .btn-deal {
+  display: inline-block;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 3px;
+  padding-left: 3em;
+  padding-right: 3em;
+}
+.btn-new:hover, .btn-stand:hover, .btn-hit:hover, .btn-deal:hover {
+  transform: scale(0.8);
+}
+.btn-new:focus, .btn-stand:focus, .btn-hit:focus, .btn-deal:focus {
+  background-color: #37424b;
+}
+
+.btn-deal {
+  background-color: #ddebf5;
+  color: rgb(2, 2, 2);
+}
+
+.btn-hit {
+  background-color: #3f8cc7;
+  color: #F4F4F9;
+}
+
+.btn-stand {
+  background-color: #ddebf5;
+  color: rgb(2, 2, 2);
+}
+
+.btn-new {
+  background-color: #3f8cc7;
+  color: #F4F4F9;
+}
+
+.btn-div {
+  min-width: 100%;
+  max-height: 5vh;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+#zero-alert, #submit-alert {
+  position: absolute;
+  top: 10%;
+  -webkit-animation: opacity 2s ease-in-out infinite;
+          animation: opacity 2s ease-in-out infinite;
+  opacity: 1;
+  font-weight: bold;
+}
+
+/* From Stackoverflow: https://stackoverflow.com/questions/43720936/how-to-create-blinking-text-with-css-only */
+#submit-alert {
+  color: #201E50;
+}
+
+#zero-alert {
+  color: #DD7373;
+}
+
+@-webkit-keyframes opacity {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+body {
+  background-color: #35654d;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+body div {
+  margin: auto;
+}
+
+h1 {
+  font-size: 26px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+h4 {
+  font-size: 20px;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100vh;
+  height: 90vh;
+}
+
+.dealer-cards, .player-cards {
+  position: relative;
+  width: 90%;
+  height: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dealer-cards {
+  margin-bottom: 0em;
+}
+
+.player-cards {
+  margin-top: 0em;
+}
+
+.outcome {
+  position: relative;
+  width: 23%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.player-details {
+  position: relative;
+  width: 23%;
+  height: 20%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: #E0CBA8;
+}
+.player-details .player-total, .player-details .player-currency, .player-details .player-bet {
+  width: 8em;
+  height: 2em;
+  display: flex;
+  justify-content: center;
+  color: #ddebf5;
+}
+
+.hand-outcome {
+  width: 90%;
+}
+
+.bet-div {
+  min-width: 30%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0em;
+  color: #ddebf5;
+}
+.bet-div #form, .bet-div #betform {
+  width: 65%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  justify-content: space-evenly;
+}
+.bet-div #form input, .bet-div #betform input {
+  width: 80px;
+}
+.bet-div #form input:focus, .bet-div #betform input:focus {
+  background-color: #f8fa76;
+}
+
+.outcome-text {
+  font-size: 20px;
+  font-weight: bold;
+  color: #DD7373;
+  text-align: center;
+}
+
+.player-text, .dealer-text {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  color: #E0CBA8;
+}
+
+#back-card {
+  border-radius: 5%;
+}/*# sourceMappingURL=style.css.map */

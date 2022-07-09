@@ -1,0 +1,103 @@
+@import "btnConfig";
+@import "utilities";
+@import "config";
+@import "alertconfig";
+
+
+body {
+    background-color: $primary-color;
+    @include flex-row-wrap();
+
+    div {
+        margin: auto;
+    }
+}
+
+
+$font-size: (26px, 20px, 20px, 20px );
+
+@for $i from 1 through 4 {
+
+  h#{$i} {
+    font-size: nth($font-size, $i);
+  }
+}
+
+.card-container {
+    @include flex-row-wrap();
+    width: 100vh;
+    height: 90vh;
+}
+
+.dealer-cards, .player-cards {
+    @include dealer-player-cards();
+}
+
+.dealer-cards{
+    margin-bottom: 0em;
+}
+.player-cards{
+    margin-top: 0em;
+}
+
+.outcome {
+    position: relative;
+    width: 23%;
+    height: 20%;
+    @include flex-justify-items();
+}
+
+.player-details {
+    position: relative;
+    width: 23%;
+    height: 20%;
+    @include flex-row-wrap();
+    color: $primary-text-color;
+
+    .player-total, .player-currency, .player-bet {
+        @include player-values()
+    }
+
+}
+
+.hand-outcome {
+    width: 90%;
+}
+
+.bet-div {
+    min-width: 30%;
+    @include flex-justify();
+    margin-bottom: 0em;
+    @include set-font-color(lighten($player-text-color, 80%));
+    
+    #form, #betform {
+        width: 65%;
+        @include flex-row-wrap();
+        justify-content: space-evenly;
+        
+        input {
+            width: 80px;
+    
+            &:focus{
+                background-color: $bet-focus-color; 
+            }
+        }
+    }
+
+}
+
+.outcome-text {
+    font-size: $alert-font-size;
+    font-weight: bold;
+    @include set-font-color($outcome-text-color);
+    text-align: center;
+}
+
+.player-text, .dealer-text {
+    width: fit-content;
+    @include set-font-color($primary-text-color);
+}
+
+#back-card {
+    border-radius: 5%;
+}

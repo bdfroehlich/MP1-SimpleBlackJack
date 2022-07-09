@@ -1,9 +1,8 @@
 div {
-    /* border: 1px solid rgb(0, 0, 0); */
     margin: auto;
 }
 
-.button-div {
+.btn-div {
     min-width: 100%;
     max-height: 5vh;
     display: flex;
@@ -49,7 +48,7 @@ body {
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
-}
+} */
 
 .deal, .hit, .stand, .newround {
     padding-left: 3em;
@@ -65,12 +64,12 @@ body {
     justify-content: center;
 }
 
-.player-details {
+ .player-details {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     color: wheat;
-}
+} 
 
 .player-total, .player-currency, .player-bet {
     display: flex;

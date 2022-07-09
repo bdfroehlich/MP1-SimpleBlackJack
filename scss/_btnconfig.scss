@@ -1,0 +1,49 @@
+@import "utilities";
+@import "config";
+
+
+%btn {
+  display: inline-block;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 3px;
+  padding-left: 3em;
+  padding-right: 3em;
+
+  &:hover {
+    transform: scale(.80);
+  }
+  &:focus {
+    background-color: $button-focus-color;
+  }
+}
+
+
+.btn-deal {
+  @extend %btn;
+  @include set-bg(lighten($secondary-color, 80%));
+}
+
+.btn-hit {
+  @extend %btn;
+  @include set-bg(lighten($secondary-color, 40%));
+}
+
+.btn-stand {
+    @extend %btn;
+    @include set-bg(lighten($secondary-color, 80%));
+  }
+
+.btn-new {
+    @extend %btn;
+    @include set-bg(lighten($secondary-color, 40%));
+  }
+
+.btn-div {
+    min-width: 100%;
+    max-height: 5vh;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1em;
+    margin-top: 1em;
+}

@@ -1,0 +1,50 @@
+  // SCSS Function that will make sure text is light on dark backgrounds, and dark on light backgrounds.
+  @function text-color-picker($color) {
+    @if(lightness($color) > 70) {
+      @return rgb(2, 2, 2);
+    } @else {
+      @return #F4F4F9;
+    }
+  }
+  
+  // SCSS Mixin
+  @mixin set-bg($color) {
+    background-color: $color;
+    color: text-color-picker($color)
+  }
+
+  @mixin set-font-color($color) {
+    color: $color;
+  }
+
+  @mixin flex-row-wrap() {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  @mixin flex-justify() {
+    display: flex;
+    justify-content: center;
+  }
+
+  @mixin flex-justify-items() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @mixin player-values() {
+    width: 8em;
+    height: 2em;
+    @include flex-justify();
+    @include set-font-color(lighten($player-text-color, 80%));
+  }
+
+  @mixin dealer-player-cards() {
+    position: relative;
+    width: 90%;
+    height: 30%;
+    @include flex-justify-items();
+  }
