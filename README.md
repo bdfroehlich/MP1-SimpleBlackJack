@@ -18,6 +18,12 @@ To run this project in your browser launch it via the published link in the repo
 - HTML
 - CSS
 - Javascript
+- SCSS
+- Typescript
+
+### CSS vs. SCSS
+![original game with raw css](images/game_original.JPG)
+![game with scss](images/game.JPG)
 
 ### Challenges
 - The amount of comparative logic that went into checking the dealer and player hands when the turns ended.
