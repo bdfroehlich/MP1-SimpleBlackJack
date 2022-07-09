@@ -10,9 +10,6 @@ Upon launching the game the player will be prompted to place a bet. Once a bet i
 
 Blackjack rules **Ammended for Simple Blackjack** [here.](https://www.ildado.com/blackjack_rules.html "This link will take you the rules of Blackjack.")
 
-### Setup
-To run this project in your browser launch it via the published link in the repository or from the link above.
-
 ### Technologies
 - Bootstrap v5.1
 - HTML
@@ -20,6 +17,9 @@ To run this project in your browser launch it via the published link in the repo
 - Javascript
 - SCSS
 - Typescript
+
+### Setup
+To run this project in your browser launch it via the published link in the repository or from the link above.
 
 ### CSS vs. SCSS
 ![original game with raw css](https://github.com/bdfroehlich/MP1-SimpleBlackJack/blob/main/Images/game_original.JPG?raw=true)
@@ -39,7 +39,7 @@ To run this project in your browser launch it via the published link in the repo
 - Total currency needs to be a decimal.
 - Add some CSS effects to make the cards being dealt appear to come off the center deck.
 
-### Current Bugs To Be Fixed
+### Issues
 - On initialization of the page the player bet is not accepted on the first submit. It must be submitted a second time. Betting will continue to work as intended after.
 
 ### Sources

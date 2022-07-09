@@ -1,0 +1,121 @@
+- updating images src
+- Merge pull request #1 from bdfroehlich/scss-styling
+- adding images to readme
+- updating readme
+- removing bootstrap
+- cleaning up style.scss and making code more DRY
+- cleaning up styling, removing redundant styling
+- cleaning up player detail div items
+- additional mixins and style.scss cleanup
+- cleaning up scss styling
+- updating styling
+- adding alertconfig partial file
+- fixing index.html issue
+- updating styling
+- commit
+- cleaning code
+- updating readme
+- updating readme
+- cleaning up code
+- updating readme
+- commit
+- re-organizing readme
+- clean up code
+- updating sources
+- updating notes in createDeck
+- adding source for creating dictionaries
+- added source to shuffle function
+- updating readme
+- adding link to game in readme
+- updating title on browser tab
+- adding to future features
+- I think I have finally resolved the getBet and updateCurrency issues..
+- fixed issue with winning twice in a row - winnings needed to be set back to none once the table was cleared - fixed issue with hard hitting two aces
+- corrected outcome logic for if the dealers hand was = 17 and updated submit/deal above text
+- Merge branch 'main' of https://github.com/bdfroehlich/MP1-SimpleBlackJack
+- updated intial place bet and deal text
+- Set theme jekyll-theme-slate
+- Set theme jekyll-theme-cayman
+- updating md
+- added href to back of card image
+- updating md
+- fixed currency calculation error not taking bet from player when dealer won
+- fixed dealer hit function by removing conditional and adding it to checkdealer total, fixed issue with winnings and currency values in updateCurrency
+- adding audio file updated fade styling
+- experimenting with audio files and sound effects
+- updating readme
+- setTimeouts for initial deal
+- cleaned up code
+- updating readme
+- fixed return values from updateCurrency()
+- added fade-in & fade-out styling and source
+- added function comments for readability
+- updated functionality
+- updating readme
+- updating readme
+- updated alert id styling
+- added h4 element for various alerts
+- fixed getBet, updateCurrency, and added currency checker to check for zero currency
+- updating readme
+- updating readme
+- updating readme
+- updating readme
+- updating readme
+- updating readme
+- updating readme
+- working on fixing bet/updatecurrency functions
+- working on bet logic/value updates and added text for player to bet and click deal
+- fixed some errors in outcome logic
+- changed outcome element tag to h3
+- added boolean so player can not immediately start new round after placing bet
+- updated styles to match new form div and form IDs
+- updated default bet value, revised form div and form classes to separate IDs so .reset could be used on form
+- currency updates when bet submitted, form clears and bet amount clears when new round is started
+- cleaned up form element, cleaned up styles
+- updating bet function, added boolean for bet submission, cleaned up selectors
+- working on betsubmit function
+- updated form and styling
+- removed bet buttons and added bet input
+- clean up style.css
+- added getCurrency function to be built upon
+- fixed issue with start new round clear player total text
+- styling and DOM updates
+- fixed comparative logic error
+- updated styling of player details container
+- updated player details container
+- updated stand function to compare dealer vs player before dealerHit
+- updated dealerHit functionality and checkDealerTotal log, added function to render dealer images face up after stand is hit
+- updated commentary, created dealerHit function, and refactored playerHit
+- updating notes for readability
+- index and css updates, update hit and stand functionality & logic
+- commiting changes to creatDeck index.html play and styles
+- update backcard img
+- cleaned up styling
+- updated pseudocode and notes for future logic
+- updated existing functions, added refreshdeck and cleardeck
+- updated button styling
+- removed Queue class, updated getplayercard getdealercard and added droptopcard
+- added backcard image
+- cleaned up play.js
+- styled text for dealer and player
+- added dealer and player text to respective containers
+- updated card container styling
+- added dynamic image creation to respective functions
+- added image for backdeck card
+- updated return from getCardImageName
+- updating new div styling and buttons
+- adding card container and divs for dealer, the deck and the player
+- created flex div for buttons
+- created dummy deal functions, tested card image rendering
+- added hit, stand and start new round buttons
+- updating image sizes
+- updated body styling
+- removed originally created DIV elements, created deal button element for future event listener
+- moved deck creation into play.js, created a playQueue, and can now log the drawn or popped/dequeued cards image path
+- created weight dictionary, shuffledeck and shufflearray function, and queue class
+- adding pseudocode file and starting to list required functionality
+- cleaning up js file
+- created Card and Deck classes, Deck class has a createDeck function which is called and converted from an object to an array of cards
+- updating some intial styling
+- first commit, initial js, css & html files w/ some basic styling and card images
+- Initial commit
