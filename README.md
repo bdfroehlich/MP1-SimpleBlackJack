@@ -22,8 +22,8 @@ To run this project in your browser launch it via the published link in the repo
 - Typescript
 
 ### CSS vs. SCSS
-![original game with raw css](images/game_original.JPG)
-![game with scss](images/game.JPG)
+![original game with raw css](https://github.com/bdfroehlich/MP1-SimpleBlackJack/blob/main/Images/game_original.JPG?raw=true)
+![game with scss](https://github.com/bdfroehlich/MP1-SimpleBlackJack/blob/main/Images/game.JPG?raw=true)
 
 ### Challenges
 - The amount of comparative logic that went into checking the dealer and player hands when the turns ended.
